@@ -1,0 +1,17 @@
+Muneeb Ahmad [2:14 AM] 
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  username: postgres
+  password: postgres
+
+development:
+  <<: *default
+  pool: 5
+  database: retain_development
+  host: localhost
+
+test:
+  <<: *default
+  pool: 5
+  database: retain_test

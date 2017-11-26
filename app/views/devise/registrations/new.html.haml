@@ -1,0 +1,33 @@
+%div
+  .login_wrapper
+    #register.animate.form.registration_form
+      %section.login_content
+        = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+          %img.login-logo-image{:src => image_path("Fieldwire_icon.svg")}
+            %h1 Create Account
+            .row
+              .col-md-6
+                %div
+                  = f.text_field :first_name, autofocus: true, placeholder: "First", class: "form-control"
+              .col-md-6
+                %div
+                  = f.text_field :last_name, placeholder: "Last", class: "form-control"  
+            %div
+              = f.text_field :company_name, placeholder: "Company (Optional)", class: "form-control"
+            %div
+              = f.email_field :email, placeholder: "Email", class: "form-control"  
+            %div
+              = f.password_field :password, autocomplete: "off", placeholder: "Password", class: "form-control"
+            %div
+              = f.password_field :password_confirmation, autocomplete: "off", placeholder: "Confirm Password", class: "form-control"
+            %div
+              = f.submit "Register", class: "btn btn-success submit"
+            .clearfix
+            .separator
+              %p.change_link
+                Already a member ?
+                %a.to_register{:href => new_user_session_path} Log in
+              .clearfix
+              %br/
+              %div
+                %p By registering you agree to Fieldwire's Terms, Privacy Policy  EULA

@@ -1,0 +1,197 @@
+.main-panel
+  .row
+    .col-md-8.col-xs-8.col-xs-12
+    .col-md-4.col-sm-4.col-xs-12.form-group.pull-right.top_search
+      %form
+        .input-group
+          %input.form-control{:placeholder => "Search for...", :type => "text"}
+            %span.input-group-btn
+              %button.btn.btn-default{:type => "button"} Go!
+.x_panel
+  .x_content
+    .tabsarea{"data-example-id" => "togglable-tabs", :role => "tabpanel"}
+      %button.btn-new-project.btn.btn-success{"data-target" => ".bs-example-modal-sm", "data-toggle" => "modal", :type => "button"} + New Project
+      %ul#myTab.nav.nav-tabs.bar_tabs{:role => "tablist"}
+        %li.active{:role => "presentation"}
+          %a#allprojects{"aria-expanded" => "true", "data-toggle" => "tab", :href => "#tab_content0", :role => "tab"} Project Information
+        %li{:role => "presentation"}
+          %a#home-tab{"aria-expanded" => "true", "data-toggle" => "tab", :href => "#tab_content1", :role => "tab"}
+            Projects Tasks  Sub Tasks
+            %small Sessions
+    #myTabContent.tab-content
+      #tab_content0.tab-pane.fade.active.in{"aria-labelledby" => "allprojects", :role => "tabpanel"}
+        .row
+          .x_content
+            .col-md-3.col-sm-3.col-xs-12
+              %section.panel
+                .x_title
+                  %h2 Project Description
+                  .clearfix
+                .panel-body
+                  .project_detail
+                    %p.title Project Name
+                    %p= @project.project_name.try(:capitalize)
+                    %p.title Project Number
+                    %p= @project.project_number.try(:capitalize)
+                    %p.title Project Address
+                    %p= @project.project_address.try(:capitalize)
+                    %p.title Project Category
+                    %p= @project.project_category.try(:name).try(:capitalize)
+                    %p.title Project Sub Category
+                    %p= @project.project_sub_category.try(:name).try(:capitalize)
+                    %p.title Project Description
+                    %p= @project.description_of_project.try(:capitalize)
+            .col-md-3.col-sm-3.col-xs-12
+              %section.panel
+                .x_title
+                  %h2 Client Information
+                  .clearfix
+                .panel-body
+                  .project_detail
+                    %p.title Client Business Name
+                    %p= @project.client.try(:business_name).try(:capitalize)
+                    %p.title Client Person Name
+                    %p= @project.client.try(:person_name).try(:capitalize)
+                    %p.title Email Address
+                    %p= @project.client.try(:email).try(:capitalize)
+                    %p.title Cell No
+                    %p= @project.client.try(:cell).try(:capitalize)
+                    %p.title Fax
+                    %p= @project.client.try(:fax).try(:capitalize)
+            .col-md-3.col-sm-3.col-xs-12
+              %section.panel
+                .x_title
+                  %h2 Project Manager
+                  .clearfix
+                .panel-body
+                  .project_detail
+                    %p.title Project Manager Name
+                    %p= @project.project_manager_name.try(:capitalize)
+                    %p.title Email Address
+                    %p= @project.project_manager_email_address.try(:capitalize)
+                    %p.title Cell Number
+                    %p= @project.project_manager_cell_number.try(:capitalize)
+                / start project-detail sidebar
+            .col-md-3.col-sm-3.col-xs-12
+              %section.panel
+                .x_title
+                  %h2 Proposal  Contract Documents
+                  .clearfix
+                .panel-body
+                  .project_detail
+                    %p.title Project files
+                    %p Deveint Inc
+                    %p.title Project Leader
+                    %p Tony Chicken
+                  %br/
+                  %h5 Project files
+                  %ul.list-unstyled.project_files
+                    %li
+                      %a{:href => ""}
+                        %i.fa.fa-file-word-o
+                        Functional-requirements.docx
+                    %li
+                      %a{:href => ""}
+                        %i.fa.fa-file-pdf-o
+                        UAT.pdf
+                    %li
+                      %a{:href => ""}
+                        %i.fa.fa-mail-forward
+                        Email-from-flatbal.mln
+                    %li
+                      %a{:href => ""}
+                        %i.fa.fa-picture-o
+                        Logo.png
+                    %li
+                      %a{:href => ""}
+                        %i.fa.fa-file-word-o
+                        Contract-10_12_2014.docx
+                  %br/
+                  .text-center.mtop20
+                    %a.btn.btn-sm.btn-primary{:href => "#"} Add files
+                    %a.btn.btn-sm.btn-warning{:href => "#"} Report contact
+            .col-md-3.col-sm-3.col-xs-12
+              %section.panel
+                .x_title
+                  %h2 Proposal Drawings
+                  .clearfix
+                .panel-body
+                  %h5 Project files
+                  %ul.list-unstyled.project_files
+                    %li
+                      %a{:href => ""}
+                        %i.fa.fa-file-word-o
+                        Functional-requirements.docx
+                    %li
+                      %a{:href => ""}
+                        %i.fa.fa-file-pdf-o
+                        UAT.pdf
+                    %li
+                      %a{:href => ""}
+                        %i.fa.fa-mail-forward
+                        Email-from-flatbal.mln
+                    %li
+                      %a{:href => ""}
+                        %i.fa.fa-picture-o
+                        Logo.png
+                    %li
+                      %a{:href => ""}
+                        %i.fa.fa-file-word-o
+                        Contract-10_12_2014.docx
+                  %br/
+                  .text-center.mtop20
+                    %a.btn.btn-sm.btn-primary{:href => "#"} Add files
+                    %a.btn.btn-sm.btn-warning{:href => "#"} Report contact
+                / end project-detail sidebar
+      #tab_content1.tab-pane.fade.in{"aria-labelledby" => "home-tab", :role => "tabpanel"}
+        .row
+          .col-md-12.col-sm-12.col-xs-12
+            %ul.list-unstyled.timeline
+              %li
+                .block
+                  .tags
+                    %a{:href => ""}
+                      %span Land Aquisitions
+                  .block_content
+                    %h2.title
+                    %ul.list-unstyled.project_files
+                      %li
+                        %i.fa.fa-mail-forward
+                        Interior Design
+                      %li
+                        %i.fa.fa-mail-forward
+                        Rendering Services
+                      %li
+                        %i.fa.fa-mail-forward
+                        Landscaping Design
+              %li
+                .block
+                  .tags
+                    %span Professional Services
+                  %h2.title
+                  %ul.list-unstyled.project_files
+                    %li
+                      %i.fa.fa-mail-forward
+                      Lawyer's Services
+              %li
+                .block
+                  .tags
+                    %span Design  Engineering
+                  .block_content
+                    %h2.title
+                    %ul.list-unstyled.project_files
+                      %li
+                        %i.fa.fa-mail-forward
+                        Architectural Design
+                      %li
+                        %i.fa.fa-mail-forward
+                        Structural Engineering
+                      %li
+                        %i.fa.fa-mail-forward
+                        Interior Design
+                      %li
+                        %i.fa.fa-mail-forward
+                        Rendering Services
+                      %li
+                        %i.fa.fa-mail-forward
+                        Landscaping Design

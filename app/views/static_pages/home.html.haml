@@ -1,0 +1,471 @@
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %meta{:charset => "utf-8"}/
+    %meta{:content => "IE=edge", "http-equiv" => "X-UA-Compatible"}/
+    %meta{:content => "width=device-width, initial-scale=1.0, maximum-scale=1.0", :name => "viewport"}/
+    %title Go2Project
+    / Bootstrap
+    = stylesheet_link_tag   'static_pages', media: 'all'
+
+    %meta{:content => " ", :name => "Go2Project"}/
+    %meta{:content => "#FFFFFF", :name => "msapplication-TileColor"}/
+    %meta{:content => "mstile-144x144.png", :name => "msapplication-TileImage"}/
+  %body
+    / Page Wrapper
+    #page.animsition{"data-animsition-in" => "fade-in-down-sm", "data-animsition-out" => "fade-out-up-sm", "data-loader-type" => "loader2", "data-page-loader-text" => "Go2Project", :style => "transform-origin: 50% 50vh;"}
+      #top
+      / Home Section
+      %section#home-section.home-section.full-screen
+        .zoom-hero.full-screen{"data-anchor-target" => "#home-section", "data-top" => "transform: scale3d(1,1,1)", "data-top-bottom" => "transform: scale3d(.75,.75,1)"}
+          #animate-slider.animate-slider.alltogether-loadbars.carousel.dots-over.as-overlay.in-page-scroll{"data-background-0" => image_path("backgrounds/home-background-03.jpg"), "data-background-1" => image_path("backgrounds/home-background-02.jpg"), "data-background-2" => image_path("backgrounds/home-background-02.jpg")}
+            .slide.hs-content.first_slide
+              .hs-content-inner
+                %div{"data-effect-in" => "foldUp", "data-effect-out" => "foldOut"}
+                  %h1.hs-text-12.text-normal.font-second.text-center
+                    Welcome
+                  %p Creating A Brighter Future, Together
+                  %button.btn-get WHO WE ARE
+                %span.scroll-down-arrow.in-page-scroll{"data-100-start" => "display: none", "data-start" => "display: inline-block"}
+                  %a.ci-icon-uniE930.init-animation-2.delay1-8s{:href => "#about-section"}
+            / / .slide
+            .slide.hs-content.mid_slide
+              .hs-content-inner
+                .delay0-1s{"data-effect-in" => "fadeInUp", "data-effect-out" => "zoomOut"}
+                  %h1.hs-text-12.font-second
+                    strategy
+                    The construction app for the field
+                  %p
+                    Join 100,000+ projects who trust Go2Project every day
+                    to save time and money on-site.
+                  %button.btn-get Get Started
+                  %button.btn-get Request a Demo
+                %span.scroll-down-arrow.in-page-scroll{"data-100-start" => "display: none", "data-start" => "display: inline-block"}
+                  %a.ci-icon-uniE930.init-animation-2.delay1-8s{:href => "#about-section"}
+            / / .slide
+            .slide.hs-content.second_slide
+              .hs-content-inner
+                .delay0-1s{"data-effect-in" => "fadeInUp", "data-effect-out" => "zoomOut"}
+                  %h1.hs-text-12.font-second
+                    strategy
+                    The construction app for the field
+                  %p
+                    Join 100,000+ projects who trust Go2Project every day
+                    to save time and money on-site.
+                  %button.btn-get Get Started
+                  %button.btn-get Request a Demo
+              %span.scroll-down-arrow.in-page-scroll{"data-100-start" => "display: none", "data-start" => "display: inline-block"}
+                %a.ci-icon-uniE930.init-animation-2.delay1-8s{:href => "#about-section"}
+            / / .slide
+            .as-nav-arrows
+              %a.carousel-control.as-arrow.left{"data-target" => "prev", :href => "#."}
+                %span.icon.ion-ios7-arrow-left.arrow-left
+              %a.carousel-control.as-arrow.right{"data-target" => "next", :href => "#."}
+                %span.icon.ion-ios7-arrow-right.arrow-right
+      / / End Home Section
+      / Navbar
+      .position-relative
+        #nav-wrapper.sticky-navbar
+          %nav#nav.navbar.navbar-default.ripple-group-parent{:role => "navigation"}
+            / progressbar
+            #scroll-progressbar.scroll-progressbar
+              %div
+                %span.scroll-shadow
+            .container.in-page-scroll
+              / Brand and toggle get grouped for better mobile display
+              .navbar-header
+                %button#animated-navicon.navbar-toggle{"data-target" => "#mobile-navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+                  %span.sr-only Toggle navigation
+                  %span.icon-bar
+                  %span.icon-bar
+                  %span.icon-bar
+                %a.navbar-brand.ripple-group{:href => "#top"}
+                  .logo-holder.pull-left
+                    GO2Project
+              / Collect the nav links, forms, and other content for toggling
+              #mobile-navbar-collapse.collapse.navbar-collapse
+                %ul.nav.navbar-nav.navbar-right.cl-effect-5
+                  %li
+                    %a.ripple-group{:href => "#top"}
+                      %span{"data-hover" => "Home"} Home
+                  %li
+                    %a.ripple-group{:href => "#about-section"}
+                      %span{"data-hover" => "Products"} Products
+                  %li
+                    %a.ripple-group{:href => "#services-section"}
+                      %span{"data-hover" => "Customers"} Customers
+                  %li
+                    %a.ripple-group{:href => "#portfolio-section"}
+                      %span{"data-hover" => "Pricing"} Pricing
+                  %li
+                    %a.ripple-group{:href => "#team-section"}
+                      %span{"data-hover" => "Support"} Support
+                  %li
+                    %a.ripple-group{:href => "#process-section"}
+                      %span{"data-hover" => "About"} About
+                  
+                  - if user_signed_in?
+                    %li
+                      %a.btn-signup{:href => projects_path(project_cat: ProjectCategory.first.try(:name))}
+                        GO TO MAIN ->
+                  
+                  - else
+                    %li
+                      %a.ripple-group{:href => new_user_session_path}
+                        %span{"data-hover" => "Login"} Login
+                    %li
+                      %a.btn-signup{:href => new_user_registration_path}
+                        Sign up
+              / /.navbar-collapse
+            / /.container
+      / / End Navbar
+      #page-2
+        / About Section
+        %section#about-section.about-section.section
+          .container
+            .text-center
+              %h1.text-center
+                about
+                %span the GO2Project
+            .row
+              .col-sm-12.wow.fadeInUp.margin-bottom-xs-30
+                .aboutstext.wow.fadeInUp{"data-wow-delay" => "0s"}
+                  %p "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown .Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown . Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown ."
+                %button.btn-seemore.wow.fadeInUp.animated{"data-wow-delay" => ".5s", :type => "button"} Read More
+            / /.row
+          / /.container
+        / / End About Section
+        %hr/
+        / Services Section
+        %section#services-section.services-section.section.usecases
+          .container
+            .section-title
+              %div
+                %h1.text-center Use Cases
+            .services-section-items.padding-top-sm-10.row
+              #owl-demo.owl-carousel
+                .services-section-item.col-sm-12.margin-bottom-xs-40.wow.fadeInUpLeftScale
+                  .customer-tile
+                    %img{:alt => "Webcor", :src => image_path("usecases-image1.jpg")}/
+                    .body
+                      %h2.title.truncate Webcor Builders - Moscone Center
+                      .location
+                        %img{:src => "index/Location_pin.png", :srcset => "/images/index/Location_pin.png 1x, /images/index/Location_pin@2x.png 2x"}>/
+                        San Francisco, CA
+                      %hr/
+                      .blurb
+                        See how Webcor Builders used Fieldwire’s construction manager app to reduce excess work and easily manage all drawings on the Moscone Center expansion project.
+                / / End Services Section Item
+                .services-section-item.col-sm-12.wow.fadeInUpRightScale
+                  .customer-tile
+                    %img{:alt => "Webcor", :src => image_path("usecases-image1.jpg")}/
+                    .body
+                      %h2.title.truncate Webcor Builders - Moscone Center
+                      .location
+                        %img{:src => "index/Location_pin.png", :srcset => "/images/index/Location_pin.png 1x, /images/index/Location_pin@2x.png 2x"}>/
+                        San Francisco, CA
+                      %hr/
+                      .blurb
+                        See how Webcor Builders used Fieldwire’s construction manager app to reduce excess work and easily manage all drawings on the Moscone Center expansion project.
+                / / End Services Section Item
+                .services-section-item.col-sm-12.margin-bottom-xs-40.wow.fadeInUpScale
+                  .customer-tile
+                    %img{:alt => "Webcor", :src => image_path("Clark.jpg")}/
+                    .body
+                      %h2.title.truncate Webcor Builders - Moscone Center
+                      .location
+                        %img{:src => "index/Location_pin.png", :srcset => "/images/index/Location_pin.png 1x, /images/index/Location_pin@2x.png 2x"}>/
+                        San Francisco, CA
+                      %hr/
+                      .blurb
+                        See how Webcor Builders used Fieldwire’s construction manager app to reduce excess work and easily manage all drawings on the Moscone Center expansion project.
+                / / End Services Section Item
+                .services-section-item.col-sm-12.margin-bottom-xs-40.wow.fadeInUpRightScale
+                  .customer-tile
+                    %img{:alt => "Webcor", :src => image_path("usecases-image1.jpg")}/
+                    .body
+                      %h2.title.truncate Webcor Builders - Moscone Center
+                      .location
+                        %img{:src => "index/Location_pin.png", :srcset => "/images/index/Location_pin.png 1x, /images/index/Location_pin@2x.png 2x"}>/
+                        San Francisco, CA
+                      %hr/
+                      .blurb
+                        See how Webcor Builders used Fieldwire’s construction manager app to reduce excess work and easily manage all drawings on the Moscone Center expansion project.
+                / / End Services Section Item
+                .services-section-item.col-sm-12.margin-bottom-xs-40.wow.fadeInUpLeftScale
+                  .customer-tile
+                    %img{:alt => "Webcor", :src => image_path("usecases-image1.jpg")}/
+                    .body
+                      %h2.title.truncate Webcor Builders - Moscone Center
+                      .location
+                        %img{:src => "index/Location_pin.png", :srcset => "/images/index/Location_pin.png 1x, /images/index/Location_pin@2x.png 2x"}>/
+                        San Francisco, CA
+                      %hr/
+                      .blurb
+                        See how Webcor Builders used Fieldwire’s construction manager app to reduce excess work and easily manage all drawings on the Moscone Center expansion project.
+                / / End Services Section Item
+                .services-section-item.col-sm-12.margin-bottom-xs-40.wow.fadeInUpScale
+                  .customer-tile
+                    %img{:alt => "Webcor", :src => image_path("Clark.jpg")}/
+                    .body
+                      %h2.title.truncate Webcor Builders - Moscone Center
+                      .location
+                        %img{:src => "index/Location_pin.png", :srcset => "/images/index/Location_pin.png 1x, /images/index/Location_pin@2x.png 2x"}>/
+                        San Francisco, CA
+                      %hr/
+                      .blurb
+                        See how Webcor Builders used Fieldwire’s construction manager app to reduce excess work and easily manage all drawings on the Moscone Center expansion project.
+                / / End Services Section Item
+                .services-section-item.col-sm-12.wow.fadeInUpRightScale
+                  .customer-tile
+                    %img{:alt => "Webcor", :src => image_path("usecases-image1.jpg")}/
+                    .body
+                      %h2.title.truncate Webcor Builders - Moscone Center
+                      .location
+                        %img{:src => "index/Location_pin.png", :srcset => "/images/index/Location_pin.png 1x, /images/index/Location_pin@2x.png 2x"}>/
+                        San Francisco, CA
+                      %hr/
+                      .blurb
+                        See how Webcor Builders used Fieldwire’s construction manager app to reduce excess work and easily manage all drawings on the Moscone Center expansion project.
+                / / End Services Section Item
+                .services-section-item.col-sm-12.wow.fadeInUpRightScale
+                  .customer-tile
+                    %img{:alt => "Webcor", :src => image_path("usecases-image1.jpg")}/
+                    .body
+                      %h2.title.truncate Webcor Builders - Moscone Center
+                      .location
+                        %img{:src => "index/Location_pin.png", :srcset => "/images/index/Location_pin.png 1x, /images/index/Location_pin@2x.png 2x"}>/
+                        San Francisco, CA
+                      %hr/
+                      .blurb
+                        See how Webcor Builders used Fieldwire’s construction manager app to reduce excess work and easily manage all drawings on the Moscone Center expansion project.
+            / /.row
+          / /.container
+        / / End Services Section
+        / / Start video Section
+        %section.list-block
+          .container
+            .row
+              .col-md-6.col-sm-6.col-xs-12
+                .video-test.wow.fadeInUp{"data-wow-delay" => "0s"}
+                  %h1 WE WORK HARD TO MAKE THE VIDEO WORTH YOU
+                  %ul.why-list
+                    %li.wow.fadeInUp{"data-wow-delay" => "0s"}
+                      .row
+                        .col-sm-3
+                          .cricel-holder
+                            %span 01.
+                        .col-sm-9
+                          %h5 Your team will love using it everyday.
+                          %p Fieldwire was built to create value for the foremen, superintendents, and engineers out there in the field.
+                    %li.wow.fadeInUp{"data-wow-delay" => "1s"}
+                      .row
+                        .col-sm-3
+                          .cricel-holder
+                            %span 01.
+                        .col-sm-9
+                          %h5 Your team will love using it everyday.
+                          %p Fieldwire was built to create value for the foremen, superintendents, and engineers out there in the field.
+                  %button.btn-seemore.pull-right.wow.fadeInUp{"data-wow-delay" => "2s", :type => "button"} Read More
+              .col-md-6.col-sm-6.col-xs-12.padding-0.wow.fadeInUp{"data-wow-delay" => "0s"}
+                %img.imge-resonsive{:src => image_path("ios_all_devices_500.jpg")}/
+        / / End video Section
+        / / Start video Section
+        %section.video-block
+          .row
+            .col-md-6.col-sm-6.col-xs-12.padding-0
+              %iframe{:src => "https://www.youtube.com/embed/sivotYbUMN0"}
+            .col-md-6.col-sm-6.col-xs-12
+              .video-text.wow.fadeInUp{"data-wow-delay" => "0s"}
+                %h1 Lean Construction Management
+                %p Lean Construction Management Our construction app bridges the gap between companies to make communication effortless between the field and office staff and eliminate waste in everyday field activities.
+                %p
+                  The best construction management apps help improve the performance of your project without asking you to change the way you work.
+                %button.btn-seemore.pull-right.wow.fadeInUp{"data-wow-delay" => "1s", :type => "button"} Read More
+        / / End video Section
+        / / Start Staff Section
+        / / End Staff Section
+        / / Start Services Section
+        %section.services-block
+          .head.wow.fadeInUp{"data-wow-delay" => "0s"}
+            %h1 Services
+            %p Quisque lorem tortor fringilla sed lorem vestibulum
+          .container
+            .row
+              .col-md-6.col-sm-6.col-xs-12.padding-0.wow.fadeInUp{"data-wow-delay" => "1s"}
+                .service-item
+                  %h3 Velit mauris egestas quam
+                  %p Quent per conubia nostra, per inceptos himenaeos. Mauris in erat justoac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra, erat sed fermentum feugiat, velit mauris egestas quam,ut aliquam massa nisl quis neque. Suspendisse in orci enim.
+                .service-item
+                  %h3 Velit mauris egestas quam
+                  %p Quent per conubia nostra, per inceptos himenaeos. Mauris in erat justoac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra, erat sed fermentum feugiat, velit mauris egestas quam,ut aliquam massa nisl quis neque. Suspendisse in orci enim.
+              .col-md-6.col-sm-6.col-xs-12.padding-0.wow.fadeInUp{"data-wow-delay" => "2s"}
+                .service-item
+                  %h3 Velit mauris egestas quam
+                  %p Quent per conubia nostra, per inceptos himenaeos. Mauris in erat justoac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra, erat sed fermentum feugiat, velit mauris egestas quam,ut aliquam massa nisl quis neque. Suspendisse in orci enim.
+                .service-item
+                  %h3 Velit mauris egestas quam
+                  %p Quent per conubia nostra, per inceptos himenaeos. Mauris in erat justoac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit. Sed ut imperdiet nisi. Proin condimentum fermentum nunc. Etiam pharetra, erat sed fermentum feugiat, velit mauris egestas quam,ut aliquam massa nisl quis neque. Suspendisse in orci enim.
+        / / End video Section
+        / / Start Services Section
+        %section.clients-block
+          .head.wow.fadeInUp{"data-wow-delay" => "0s"}
+            %h1 OUR CLIENTS
+            %p Quisque lorem tortor fringilla sed lorem vestibulum
+          .container
+            .column.mcb-column.one.column_clients
+              %ul.clients-list.clearfix
+                %li.wow.fadeInUp{"data-wow-delay" => "0s"}
+                  .client_wrapper
+                    %a{:href => "#", :target => "_blank", :title => "Client 1"}
+                      .gs-wrapper
+                        %img.scale-with-grid.wp-post-image{:alt => "", :height => "75", :sizes => "(max-width: 145px) 100vw, 145px", :src => "http://betheme.muffingroupsc.netdna-cdn.com/be/video/wp-content/uploads/2015/02/client_1-145x75.png", :srcset => "http://betheme.muffingroupsc.netdna-cdn.com/be/video/wp-content/uploads/2015/02/client_1-145x75.png 145w, http://betheme.muffingroupsc.netdna-cdn.com/be/video/wp-content/uploads/2015/02/client_1-50x26.png 50w, http://betheme.muffingroupsc.netdna-cdn.com/be/video/wp-content/uploads/2015/02/client_1.png 155w", :width => "145"}/
+                %li.wow.fadeInUp{"data-wow-delay" => "1.1s"}
+                  .client_wrapper
+                    %a{:href => "#", :target => "_blank", :title => "Client 2"}
+                      .gs-wrapper
+                        %img.scale-with-grid.wp-post-image{:alt => "", :height => "75", :sizes => "(max-width: 145px) 100vw, 145px", :src => "http://betheme.muffingroupsc.netdna-cdn.com/be/video/wp-content/uploads/2015/02/client_2-145x75.png", :srcset => "http://betheme.muffingroupsc.netdna-cdn.com/be/video/wp-content/uploads/2015/02/client_2-145x75.png 145w, http://betheme.muffingroupsc.netdna-cdn.com/be/video/wp-content/uploads/2015/02/client_2-50x26.png 50w, http://betheme.muffingroupsc.netdna-cdn.com/be/video/wp-content/uploads/2015/02/client_2.png 155w", :width => "145"}/
+                %li.wow.fadeInUp{"data-wow-delay" => "1.2s"}
+                  .client_wrapper
+                    %a{:href => "#", :target => "_blank", :title => "Client 3"}
+                      .gs-wrapper
+                        %img.scale-with-grid.wp-post-image{:alt => "", :height => "75", :sizes => "(max-width: 145px) 100vw, 145px", :src => "http://betheme.muffingroupsc.netdna-cdn.com/be/video/wp-content/uploads/2015/02/client_3-145x75.png", :srcset => "http://betheme.muffingroupsc.netdna-cdn.com/be/video/wp-content/uploads/2015/02/client_3-145x75.png 145w, http://betheme.muffingroupsc.netdna-cdn.com/be/video/wp-content/uploads/2015/02/client_3-50x26.png 50w, http://betheme.muffingroupsc.netdna-cdn.com/be/video/wp-content/uploads/2015/02/client_3.png 155w", :width => "145"}/
+                %li.wow.fadeInUp{"data-wow-delay" => "1.3"}
+                  .client_wrapper
+                    %a{:href => "#", :target => "_blank", :title => "Client 4"}
+                      .gs-wrapper
+                        %img.scale-with-grid.wp-post-image{:alt => "", :height => "75", :sizes => "(max-width: 145px) 100vw, 145px", :src => "http://betheme.muffingroupsc.netdna-cdn.com/be/video/wp-content/uploads/2015/02/client_4-145x75.png", :srcset => "http://betheme.muffingroupsc.netdna-cdn.com/be/video/wp-content/uploads/2015/02/client_4-145x75.png 145w, http://betheme.muffingroupsc.netdna-cdn.com/be/video/wp-content/uploads/2015/02/client_4-50x26.png 50w, http://betheme.muffingroupsc.netdna-cdn.com/be/video/wp-content/uploads/2015/02/client_4.png 155w", :width => "145"}/
+                %li.wow.fadeInUp{"data-wow-delay" => "1.4s"}
+                  .client_wrapper
+                    %a{:href => "#", :target => "_blank", :title => "Client 5"}
+                      .gs-wrapper
+                        %img.scale-with-grid.wp-post-image{:alt => "", :height => "75", :sizes => "(max-width: 145px) 100vw, 145px", :src => "http://betheme.muffingroupsc.netdna-cdn.com/be/video/wp-content/uploads/2015/02/client_5-145x75.png", :srcset => "http://betheme.muffingroupsc.netdna-cdn.com/be/video/wp-content/uploads/2015/02/client_5-145x75.png 145w, http://betheme.muffingroupsc.netdna-cdn.com/be/video/wp-content/uploads/2015/02/client_5-50x26.png 50w, http://betheme.muffingroupsc.netdna-cdn.com/be/video/wp-content/uploads/2015/02/client_5.png 155w", :width => "145"}/
+                %li.wow.fadeInUp{"data-wow-delay" => "1.5s"}
+                  .client_wrapper
+                    %a{:href => "#", :target => "_blank", :title => "Client 6"}
+                      .gs-wrapper
+                        %img.scale-with-grid.wp-post-image{:alt => "", :height => "75", :sizes => "(max-width: 145px) 100vw, 145px", :src => "http://betheme.muffingroupsc.netdna-cdn.com/be/video/wp-content/uploads/2015/02/client_6-145x75.png", :srcset => "http://betheme.muffingroupsc.netdna-cdn.com/be/video/wp-content/uploads/2015/02/client_6-145x75.png 145w, http://betheme.muffingroupsc.netdna-cdn.com/be/video/wp-content/uploads/2015/02/client_6-50x26.png 50w, http://betheme.muffingroupsc.netdna-cdn.com/be/video/wp-content/uploads/2015/02/client_6.png 155w", :width => "145"}/
+        / / End video Section
+        %hr/
+        / / Start blue Section
+        %section.bluearea
+          .container.wow.fadeInUp{"data-wow-delay" => "1s"}
+            %h1 WE ARE READY TO MAKE VIDEO THAT WILL CHANGE THE WAY PEOPLE THINK ABOUT YOUR COMPANY
+            %button.btn-seemore.pull-right{:type => "button"} Get Started
+        / / End blue Section
+        / / Start blue Section
+        %footer#footer
+          .container
+            .row
+              .col-md-3.col-sm-6.col-xs-12
+                %h4 Platforms
+                %ul.footer-link
+                  %li
+                    %i.fa.fa-caret-right
+                    %a{:href => "#"} iPhone
+                  %li
+                    %i.fa.fa-caret-right
+                    %a{:href => "#"} iPad
+                  %li
+                    %i.fa.fa-caret-right
+                    %a{:href => "#"} Android
+                  %li
+                    %i.fa.fa-caret-right
+                    %a{:href => "#"} Windows (beta)
+              .col-md-3.col-sm-6.col-xs-12
+                %h4 Blog
+                %ul.footer-link
+                  %li
+                    %i.fa.fa-caret-right
+                    %a{:href => "#"} Fieldwire on the Road
+                  %li
+                    %i.fa.fa-caret-right
+                    %a{:href => "#"} 2-Way Collaboration with Fieldwire and Box
+                  %li
+                    %i.fa.fa-caret-right
+                    %a{:href => "#"} 3 Ways Fieldwire Supports Last Planner
+                  %li
+                    %i.fa.fa-caret-right
+                    %a{:href => "#"} Fall Feature Release
+              .col-md-3.col-sm-6.col-xs-12
+                %h4 About Us
+                %ul.footer-link
+                  %li
+                    %i.fa.fa-caret-right
+                    %a{:href => "#"} Team
+                  %li
+                    %i.fa.fa-caret-right
+                    %a{:href => "#"} Jobs
+                  %li
+                    %i.fa.fa-caret-right
+                    %a{:href => "#"} Blog
+                  %li
+                    %i.fa.fa-caret-right
+                    %a{:href => "#"} Store
+              .col-md-3.col-sm-6.col-xs-12
+                %h4 Social Network
+                %ul.footer-link
+                  %li
+                    %i.fa.fa-caret-right
+                    %a{:href => "#"}
+                      %i.fa.fa-google-plus{"aria-hidden" => "true"}
+                      %span Google Plus
+                  %li
+                    %i.fa.fa-caret-right
+                    %a{:href => "#"}
+                      %i.fa.fa-facebook-square{"aria-hidden" => "true"}
+                      %span Facebook
+                  %li
+                    %i.fa.fa-caret-right
+                    %a{:href => "#"}
+                      %i.fa.fa-twitter-square{"aria-hidden" => "true"}
+                      %span Twitter
+                  %li
+                    %i.fa.fa-caret-right
+                    %a{:href => "#"}
+                      %i.fa.fa-pinterest-square{"aria-hidden" => "true"}
+                      %span Pinterest
+          .footer_copy
+            .container
+              .column.one
+                .copyright
+                  459 Geary Street, Suite 500, San Francisco, CA 94102
+                  %a{:href => "http://muffingroup.com", :rel => "nofollow", :target => "_blank"} support@fieldwire.com
+                  %p +1 855-222-4959  © 2016 Fieldwire
+                %ul.social
+        / / End blue Section
+        / Facts Section
+      / / #page-2
+    / / #page
+    / JS Scripts
+    =javascript_include_tag 'static_pages'
+    / / End JS Scripts
+    :javascript
+      $(document).ready(function(){
+      $(".owl-carousel").owlCarousel();
+      });
+%html
+  :css
+    .btn-signup {
+      border: 1px  solid #1d3e93 !important;
+      display: inline-block;
+      padding: 11px 20px;
+      margin-bottom: 15px;
+      cursor: pointer;
+      margin-right: 7px;
+      border-radius: 5px;
+      position: relative;
+      overflow: hidden;
+      -webkit-box-shadow: inset 0 0 0 1px rgba(0,0,0,.03);
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,.03);
+      height: 29px;
+      margin: -3px 0 0;
+      line-height: 28px !important;
+    }
+    .btn-signup:hover {
+      background-color: #1d3e93 !important;
+      color: #fff !important;
+      background-image: url(../box_shadow_button.png);
+      background-repeat: repeat-x;
+    }

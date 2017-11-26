@@ -1,0 +1,51 @@
+.main-panel
+  .row
+    .col-md-8.col-xs-8.col-xs-12
+    .col-md-4.col-sm-4.col-xs-12.form-group.pull-right.top_search
+      %form
+        .input-group
+          %input.form-control{:placeholder => "Search for...", :type => "text"}/
+          %span.input-group-btn
+            %button.btn.btn-default{:type => "button"} Go!
+.x_panel
+  .x_content
+    .tabsarea{"data-example-id" => "togglable-tabs", :role => "tabpanel"}
+      %ul#myTab.nav.nav-tabs.bar_tabs{:role => "tablist"}
+        %li.active{:role => "presentation"}
+          %a#allprojects{"aria-expanded" => "true", "data-toggle" => "tab", :href => "#tab_content0", :role => "tab"} Clients
+        %li{:role => "presentation"}
+          %a#home-tab{"aria-expanded" => "true", "data-toggle" => "tab", :href => "#tab_content1", :role => "tab"} + Add New Client
+    #myTabContent.tab-content
+      #tab_content0.tab-pane.fade.active.in{"aria-labelledby" => "allprojects", :role => "tabpanel"}
+        %table.table.table-bordered
+          %thead
+            %tr
+              %th
+              %th Categoires
+              %th Business Names
+              %th Project Name
+              %th Project Number
+              %th Project Sub Category
+              %th Address
+          %tbody
+            - @client_cats.each do |cat|
+              %tr
+                %td= cat.clients.present? ? '-' : '+'
+                %td= cat.name.try(:titleize)
+                %td
+                %td
+                %td
+                %td
+                %td
+              - cat.clients.each do |client|
+                %tr
+                  %td
+                  %td
+                  %td= client.business_name.try(:titleize)
+                  %td= client.project.try(:project_name).try(:titleize)
+                  %td= client.project.try(:project_number).try(:titleize)
+                  %td= client.project.try(:project_sub_category).try(:name).try(:titleize)
+                  %td= client.address
+                  
+      #tab_content1.tab-pane.fade.in{"aria-labelledby" => "home-tab", :role => "tabpanel"}
+        = render "shared/resource_form", form_object: @client 

@@ -1,0 +1,40 @@
+= form_for form_object, html: {class: "rentalapplication-form"} do |f|
+  %h2= "Add #{form_object.class.table_name.singularize.titleize} Provider"
+  .row.form-holder
+    .col-md-12.col-sm-12.col-xs-12
+      .form-group
+        .dropdown.categories-dropdown-holder
+          .form-group.label-input
+            = f.collection_select "#{form_object.category_key}_id", current_user.send(form_object.category_key.pluralize) ,:id,:name, include_blank: "Select Category", class: "form-control select-dropdown"
+
+    .col-md-6.col-sm-6.col-xs-12.padding-right-0
+      .form-group.label-input
+        %label Business Name
+        = f.text_field :business_name, class: "form-control", placeholder: "Business Name"
+    .col-md-6.col-sm-6.col-xs-12
+      .form-group.label-input
+        %label Person Name
+        = f.text_field :person_name, class: "form-control", placeholder: "Person Name"
+    .col-md-6.col-sm-6.col-xs-12.padding-right-0
+      .form-group.label-input
+        %label Email
+        = f.text_field :email, class: "form-control", placeholder: "Email"
+    .col-md-6.col-sm-6.col-xs-12
+      .form-group.label-input
+        %label Cell Number
+        = f.text_field :cell, class: "form-control", placeholder: "Cell Number"
+    .col-md-6.col-sm-6.col-xs-12.padding-right-0
+      .form-group.label-input
+        %label Office Number
+        = f.text_field :office_phone, class: "form-control", placeholder: "Office Number"
+    .col-md-6.col-sm-6.col-xs-12
+      .form-group.label-input
+        %label Fax
+        = f.text_field :fax, class: "form-control", placeholder: "Fax"
+    .col-md-12.col-sm-12.col-xs-12
+      .form-group.label-input
+        %label Address
+        = f.text_field :address, class: "form-control", placeholder: "Address"
+    
+    .button-area
+      = f.submit "Save", class: "btn-save"
