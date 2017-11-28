@@ -53,3 +53,23 @@ $(document).ready(function() {
     });
   });
 
+$(document).ready(function() {
+  $('#project_client_id').change(function(){
+     var selected = $(this).find('option:selected');
+     var extra = selected.data('foo');
+
+     $('#client_person_name').val(extra.person_name); 
+     $('#client_email').val(extra.email); 
+     $('#client_cell').val(extra.cell);
+     $('#client_fax').val(extra.fax);
+  });
+
+  $('#project_staff_id').change(function(){
+     var selected = $(this).find('option:selected');
+     var extra = selected.data('foo');
+
+     $('#staff_email').val(extra.email); 
+     $('#staff_cell').val(extra.cell);
+  });
+});
+

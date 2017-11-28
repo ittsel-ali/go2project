@@ -7,4 +7,6 @@ class Project < ApplicationRecord
 
   has_many :project_tasks
   has_many :project_sub_tasks, through: :project_tasks
+
+  validates :project_name, presence: true
 end

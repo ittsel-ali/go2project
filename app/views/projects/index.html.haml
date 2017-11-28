@@ -23,7 +23,7 @@
           .row
             - sub_cat.projects.each do |project|
               .animated.flipInY.col-lg-3.col-md-3.col-sm-6.col-xs-12
-                %a.tile-stats.project-holder{:href => "#"}
+                %a.tile-stats.project-holder{:href => project_path(project.id)}
                   .contact-widget
                     %span.col-xs-6
                       %i.fa.fa-caret-square-o-right
@@ -43,7 +43,7 @@
                         %i.fa.fa-picture-o{"aria-hidden" => "true"}
 
             .animated.flipInY.col-lg-3.col-md-3.col-sm-6.col-xs-12
-              %a.new-project.pointer.project-box{:href => "#"}
+              %a.new-project.pointer.project-box{:href => new_project_path}
                 + New Project
 
       - if @sub_cats.blank?

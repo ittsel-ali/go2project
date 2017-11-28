@@ -1,0 +1,82 @@
+.main-panel
+  .row
+    .col-md-8.col-xs-8.col-xs-12
+    .col-md-4.col-sm-4.col-xs-12.form-group.pull-right.top_search
+      %form
+        .input-group
+          %input.form-control{:placeholder => "Search for...", :type => "text"}
+            %span.input-group-btn
+              %button.btn.btn-default{:type => "button"} Go!
+.x_panel
+  .tabsarea{"data-example-id" => "togglable-tabs", :role => "tabpanel"}
+    %ul#myTab.nav.nav-tabs.bar_tabs{:role => "tablist"}
+      %li.active{:role => "presentation"}
+        %a#home-tab{"aria-expanded" => "true", "data-toggle" => "tab", :href => "#tab_content1", :role => "tab"} Project Information
+    
+    #tab_content1.tab-pane.fade.active.in{"aria-labelledby" => "home-tab", :role => "tabpanel"}
+      = form_for @project, html: {class: "rentalapplication-form"} do |f|
+        .row.form-holder
+          .col-md-12.col-sm-12.col-xs-12
+            %h2 Project Description
+          
+          .col-md-6.col-sm-6.col-xs-12.padding-right-0
+            .form-group.label-input
+              %label Project Name
+              = f.text_field :project_name, placeholder: "Project Name", class: "form-control"
+          
+          .col-md-6.col-sm-6.col-xs-12
+            .form-group.label-input
+              %label Project Number
+              = f.text_field :project_number, placeholder: "Project Number", class: "form-control"
+          
+          .col-md-6.col-sm-6.col-xs-12
+            .form-group.label-input
+              = grouped_collection_select(:project, :project_sub_category_id, current_user.project_categories, :project_sub_categories, :name, :id, :name, include_blank: "Select Category", class: "selectpicker")
+              
+          .col-md-6.col-sm-6.col-xs-12.padding-right-0
+            .form-group.label-input
+              %label Address
+              = f.text_field :project_address, placeholder: "Address", class: "form-control"
+          .col-md-12.col-sm-12.col-xs-12
+            .form-group.label-input
+              %label Project Description
+              = f.text_area :description_of_project, placeholder: "Project Description", class: "form-control"
+        .row.form-holder
+          .col-md-12.col-sm-12.col-xs-12
+            %h2 Client Information
+          .col-md-6.col-sm-6.col-xs-12.padding-right-0
+            .form-group.label-input
+              = f.select :client_id, options_for_select(@clients.map { |c| [c.business_name, c.id, {'data-foo' => c.attributes.to_json}] }, selected_key = f.object.client_id), include_blank: "Select Client", class: "selectpicker"
+
+          .col-md-6.col-sm-6.col-xs-12
+            .form-group.label-input
+              %label Client Person Name
+              %input.form-control{:placeholder => "Client Person Name", :type => "text", :id => "client_person_name"}
+          .col-md-6.col-sm-6.col-xs-12.padding-right-0
+            .form-group.label-input
+              %label Email Address
+              %input.form-control{:placeholder => "Email Address", :type => "email", :id => "client_email"}
+          .col-md-6.col-sm-6.col-xs-12
+            .form-group.label-input
+              %label Cell No
+              %input.form-control{:placeholder => "Cell No", :type => "text", :id => "client_cell"}
+          .col-md-12.col-sm-12.col-xs-12
+            .form-group.label-input
+              %label Fax
+              %input.form-control{:placeholder => "Fax", :type => "text", :id => "client_fax"}
+        .row.form-holder
+          .col-md-12.col-sm-12.col-xs-12
+            %h2 Project Manager
+          .col-md-6.col-sm-6.col-xs-12.padding-right-0
+            .form-group.label-input
+              = f.select :staff_id, options_for_select(@staffs.map { |s| [s.business_name, s.id, {'data-foo' => s.attributes.to_json}] }, selected_key = f.object.staff_id), include_blank: "Select Staff", class: "selectpicker"
+          .col-md-6.col-sm-6.col-xs-12
+            .form-group.label-input
+              %label Email Address
+              %input.form-control{:placeholder => "Email Address", :type => "email", :id => "staff_email"}
+          .col-md-12.col-sm-12.col-xs-12
+            .form-group.label-input
+              %label Cell Number
+              %input.form-control{:placeholder => "Cell Number", :type => "text", :id => "staff_cell"}
+        .button-area
+          = f.submit "save", class: "btn-save"
