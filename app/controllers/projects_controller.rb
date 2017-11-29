@@ -1,9 +1,11 @@
 class ProjectsController < ApplicationController
   before_action :find_project, only: :show
-  
+  before_action :set_project_category_param, only: :index
+
   def index
-    @category = current_user.project_categories.where(name: params[:project_cat]).try(:first)
+    @category = current_user.project_categories.where(name: @project_category_name).first
     @sub_cats = @category.try(:project_sub_categories) || []
+    
     @active_tabe = [] << "active"
     
     @project_sub_cat = ProjectSubCategory.new
@@ -43,6 +45,10 @@ class ProjectsController < ApplicationController
   
   def find_project
     @project = current_user.projects.where(id: params[:id]).first
+  end
+
+  def set_project_category_param
+    @project_category_name = params[:project_cat] || current_user.project_categories.first.name
   end
 
   def permit_project_attributes
