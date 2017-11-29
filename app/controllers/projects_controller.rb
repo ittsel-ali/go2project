@@ -19,7 +19,7 @@ class ProjectsController < ApplicationController
   def create
     @project = current_user.projects.build(permit_project_attributes)
     
-    if @project.valid?
+    if @project.project_sub_category_id.present?
       @project.project_category_id = ProjectSubCategory.find(@project.project_sub_category_id).project_category.id
     end
     
