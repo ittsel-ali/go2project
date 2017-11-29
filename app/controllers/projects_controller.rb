@@ -2,8 +2,11 @@ class ProjectsController < ApplicationController
   before_action :find_project, only: :show
   
   def index
-    @sub_cats = current_user.project_categories.where(name: params[:project_cat]).try(:first).try(:project_sub_categories) || []
+    @category = current_user.project_categories.where(name: params[:project_cat]).try(:first)
+    @sub_cats = @category.try(:project_sub_categories) || []
     @active_tabe = [] << "active"
+    
+    @project_sub_cat = ProjectSubCategory.new
   end
 
   def show
@@ -20,7 +23,10 @@ class ProjectsController < ApplicationController
     @project = current_user.projects.build(permit_project_attributes)
     
     if @project.project_sub_category_id.present?
-      @project.project_category_id = ProjectSubCategory.find(@project.project_sub_category_id).project_category.id
+      category = ProjectSubCategory.find(@project.project_sub_category_id).project_category
+      
+      @project.project_category_id = category.id
+      @category_name = category.name
     end
     
     if @project.save
@@ -29,7 +35,7 @@ class ProjectsController < ApplicationController
       flash[:error] = @project.errors.full_messages.to_sentence
     end
     
-    redirect_to projects_path
+    redirect_to projects_path(project_cat: @category_name)
   end
 
 

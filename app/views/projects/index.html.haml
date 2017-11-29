@@ -16,7 +16,10 @@
           %li{:role => "presentation", :class => @active_tabe[index]}
             %a{"aria-expanded" => "true", "data-toggle" => "tab", :href => "#tab_content"+index.to_s, :role => "tab"}
               = sub_cat.name.capitalize+" Projects"
-    
+        %li{:role => "presentation"}
+          %a{"aria-expanded" => "true", "data-toggle" => "tab", :href => "#tab_content#{@sub_cats.length}", :role => "tab"}
+            %span.glyphicon.glyphicon-plus
+
     #myTabContent.tab-content
       - @sub_cats.each_with_index do |sub_cat, index|
         .tab-pane.fade.in{:role => "tabpanel", :id =>"tab_content"+index.to_s, :class => @active_tabe[index]}
@@ -45,8 +48,16 @@
             .animated.flipInY.col-lg-3.col-md-3.col-sm-6.col-xs-12
               %a.new-project.pointer.project-box{:href => new_project_path}
                 + New Project
+      .tab-pane.fade.in{:role => "tabpanel", :id =>"tab_content#{@sub_cats.length}"}
+        = form_for @category.project_sub_categories.build, html: {class: "rentalapplication-form"} do |f|
+          .col-md-4.col-sm-4.col-xs-12.padding-right-0
+            .form-group.label-input
+              %label Category Name
+              = f.text_field :project_category_id, hidden: true
+              = f.text_field :name, class: "form-control", placeholder: "Name"
 
-      - if @sub_cats.blank?
-        .animated.flipInY.col-lg-3.col-md-3.col-sm-6.col-xs-12
-          %a.new-project.pointer.project-box{:href => "#"}
-            + New Project Sub Category
+          .col-md-4.col-sm-4.col-xs-12.padding-right-0
+            .button-area
+              = f.submit "Save", class: "btn-save"
+
+

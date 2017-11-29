@@ -16,7 +16,9 @@
             = main_tab
         %li{:role => "presentation"}
           %a#home-tab{"aria-expanded" => "true", "data-toggle" => "tab", :href => "#tab_content1", :role => "tab"}
-            = "+ Add New #{new_object.class.table_name.singularize.titleize} Provider"
+            %span.glyphicon.glyphicon-plus
+
+            = "Add New #{new_object.class.table_name.singularize.titleize} Provider"
     #myTabContent.tab-content
       #tab_content0.tab-pane.fade.active.in{"aria-labelledby" => "allprojects", :role => "tabpanel"}
         %table.table.table-bordered
