@@ -10,7 +10,6 @@
 .x_panel
   .x_content
     .tabsarea{"data-example-id" => "togglable-tabs", :role => "tabpanel"}
-      %button.btn-new-project.btn.btn-success{"data-target" => ".bs-example-modal-sm", "data-toggle" => "modal", :type => "button"} + New Project
       %ul#myTab.nav.nav-tabs.bar_tabs{:role => "tablist"}
         - @sub_cats.each_with_index do |sub_cat, index|
           %li{:role => "presentation", :class => @active_tabe[index]}
@@ -50,14 +49,17 @@
                 + New Project
       .tab-pane.fade.in{:role => "tabpanel", :id =>"tab_content#{@sub_cats.length}"}
         = form_for @category.project_sub_categories.build, html: {class: "rentalapplication-form"} do |f|
-          .col-md-4.col-sm-4.col-xs-12.padding-right-0
+          .col-md-3.col-sm-3.col-xs-12.padding-right-0
+          .col-md-3.col-sm-3.col-xs-12.padding-right-0
             .form-group.label-input
               %label Category Name
               = f.text_field :project_category_id, hidden: true
               = f.text_field :name, class: "form-control", placeholder: "Name"
 
-          .col-md-4.col-sm-4.col-xs-12.padding-right-0
+          .col-md-3.col-sm-3.col-xs-12.padding-right-0
             .button-area
               = f.submit "Save", class: "btn-save"
+          .col-md-3.col-sm-3.col-xs-12.padding-right-0
+          
 
 
