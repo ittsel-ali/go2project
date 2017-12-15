@@ -10,7 +10,7 @@
           %a#allprojects{"aria-expanded" => "true", "data-toggle" => "tab", :href => "#tab_content0", :role => "tab"} Project Information
         %li{:role => "presentation"}
           %a#home-tab{"aria-expanded" => "true", "data-toggle" => "tab", :href => "#tab_content1", :role => "tab"}
-            Tasks & Sub Tasks
+            Tasks
     #myTabContent.tab-content
       #tab_content0.tab-pane.fade.active.in{"aria-labelledby" => "allprojects", :role => "tabpanel"}
         .row
@@ -81,7 +81,7 @@
                   %br/
                   .text-center.mtop20
                     = form_for Image.new do |f|
-                      .btn.btn-sm.btn-warning
+                      .btn.btn-sm.btn-warning.btn-width
                         = f.file_field :file
                       = f.hidden_field :project_id, value: @project.id 
                       = f.hidden_field :image_type, value: "contract" 
@@ -102,7 +102,7 @@
                   %br/
                   .text-center.mtop20
                     = form_for Image.new do |f|
-                      .btn.btn-sm.btn-warning
+                      .btn.btn-sm.btn-warning.btn-width
                         = f.file_field :file
                       = f.hidden_field :project_id, value: @project.id 
                       = f.hidden_field :image_type, value: "drawing" 
