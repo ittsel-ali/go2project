@@ -49,10 +49,10 @@
                 %label Sub Task Name
                 = f.text_field :name, class: "form-control", placeholder: "Sub Task Name", name: "project_sub_task[0][name]"
 
-              .col-md-4.col-sm-4.col-xs-12.padding-right-0
+              .col-md-4.col-sm-4.col-xs-4.padding-right-0
                 .button-area
                   %a.v_sub_task.btn-save{:href => "javascript:void(0);"}
                     %span.glyphicon.glyphicon-plus
-              .col-md-8.col-sm-8.col-xs-12.padding-right-0
+              .col-md-8.col-sm-8.col-xs-8.padding-right-0
                 .button-area
                   = f.submit "Create", class: "btn-save"      
