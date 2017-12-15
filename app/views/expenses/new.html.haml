@@ -1,0 +1,86 @@
+.main-panel
+  .row
+    .col-md-8.col-xs-8.col-xs-12
+    .col-md-4.col-sm-4.col-xs-12.form-group.pull-right.top_search
+      
+.x_panel.scroll-none
+  .x_content
+    .tabsarea{"data-example-id" => "togglable-tabs", :role => "tabpanel"}
+      %ul#myTab.nav.nav-tabs.bar_tabs{:role => "tablist"}
+        %li.dropdown{:role => "presentation"}
+          %a#myTabDrop1.dropdown-toggle{"aria-controls" => "myTabDrop1-contents", "data-toggle" => "dropdown", :href => "#"}
+            %span.text Select Expense Type
+            %span.caret
+          %ul#myTabDrop1-contents.dropdown-menu{"aria-labelledby" => "myTabDrop1", :role => "menu"}
+            %li
+              %a#dropdown-tab{"aria-controls" => "dropdown1", "data-toggle" => "tab", :href => "#dropdown1", :role => "tab", :tabindex => "-1"}
+                %span 
+                  Client
+            %li
+              %a#dropdown-tab{"aria-controls" => "dropdown1", "data-toggle" => "tab", :href => "#dropdown2", :role => "tab", :tabindex => "-1"}
+                %span 
+                  Professional
+            %li
+              %a#dropdown-tab{"aria-controls" => "dropdown1", "data-toggle" => "tab", :href => "#dropdown3", :role => "tab", :tabindex => "-1"}
+                %span
+                  Staff
+            %li
+              %a#dropdown-tab{"aria-controls" => "dropdown1", "data-toggle" => "tab", :href => "#dropdown4", :role => "tab", :tabindex => "-1"}
+                %span
+                  Trade
+            %li
+              %a#dropdown-tab{"aria-controls" => "dropdown1", "data-toggle" => "tab", :href => "#dropdown5", :role => "tab", :tabindex => "-1"}
+                %span
+                  Material            
+
+  #myTabContent.tab-content
+    #dropdown1.tab-pane.fade.active.in{:role => "tabpanel"}
+
+      = form_for @expense, html:{ class: "rentalapplication-form add-payment-form form-horizontal form-width"} do |f|
+        .col-md-6.col-sm-6.col-xs-12.padding-right-0
+          .form-group.label-input
+            = f.select :expensable_id, options_for_select(@clients.map { |c| [ c.business_name, c.id]}), include_blank: "Select Client"
+            = f.hidden_field :expensable_type, value: "Client"
+        
+        =render "common_fields", f: f
+
+    #dropdown2.tab-pane.fade.in{:role => "tabpanel"}
+
+      = form_for @expense, html:{ class: "rentalapplication-form add-payment-form form-horizontal form-width"} do |f|
+        .col-md-6.col-sm-6.col-xs-12.padding-right-0
+          .form-group.label-input
+            = f.select :expensable_id, options_for_select(@professionals.map { |p| [ p.business_name, p.id]}), include_blank: "Select Professional Service"
+            = f.hidden_field :expensable_type, value: "ProfessionalService"
+        
+        =render "common_fields", f: f
+
+    #dropdown3.tab-pane.fade.in{:role => "tabpanel"}
+
+      = form_for @expense, html:{ class: "rentalapplication-form add-payment-form form-horizontal form-width"} do |f|
+        .col-md-6.col-sm-6.col-xs-12.padding-right-0
+          .form-group.label-input
+            = f.select :expensable_id, options_for_select(@staffs.map { |s| [ s.business_name, s.id]}), include_blank: "Select Staff"
+            = f.hidden_field :expensable_type, value: "Staff"
+            
+        =render "common_fields", f: f
+        
+    #dropdown4.tab-pane.fade.in{:role => "tabpanel"}
+
+      = form_for @expense, html:{ class: "rentalapplication-form add-payment-form form-horizontal form-width"} do |f|
+        .col-md-6.col-sm-6.col-xs-12.padding-right-0
+          .form-group.label-input
+            = f.select :expensable_id, options_for_select(@trades.map { |t| [ t.business_name, t.id]}), include_blank: "Select Trade"
+            = f.hidden_field :expensable_type, value: "Trade"
+            
+        =render "common_fields", f: f
+        
+    #dropdown5.tab-pane.fade.in{:role => "tabpanel"}
+
+      = form_for @expense, html:{ class: "rentalapplication-form add-payment-form form-horizontal form-width"} do |f|
+        .col-md-6.col-sm-6.col-xs-12.padding-right-0
+          .form-group.label-input
+            = f.select :expensable_id, options_for_select(@materials.map { |m| [ m.business_name, m.id]}), include_blank: "Select Material"
+            = f.hidden_field :expensable_type, value: "Material"
+          
+        =render "common_fields", f: f            
+        

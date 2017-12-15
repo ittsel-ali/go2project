@@ -73,3 +73,82 @@ $(document).ready(function() {
   });
 });
 
+$(document).ready(function() {
+  $('#project_task_id').change(function(){
+    var url = $('#new_project_sub_task').attr('action');
+    var obj = url.split('/')
+    obj[4] = $(this).find('option:selected').val();
+    
+    $('#new_project_sub_task').attr('action', obj.join("/"));
+  })
+
+  $('#project_sub_task_project_task_id').change(function(){
+    $(this).find('option:selected').val();
+  })
+  
+  $('.v_sub_task').click(function(){
+     var element = $('[name="project_sub_task[0][name]"').clone();
+     var name = element.attr("name");
+     var random = Math.floor((Math.random() * 10000) + 1);
+     
+     element.attr("name", name.replace("0",random))
+     $('#repeat-sub-task').append(element);
+  });
+});
+
+$(document).ready(function() {
+  $('.expense_project_id').change(function(){
+     var selected = $(this).find('option:selected');
+     var tasks = selected.data('tasks');
+
+     $('.expense_project_task_id').empty();
+     $('.expense_project_task_id').append($('<option>', { 
+        text: 'Select Tasks',
+      }));
+
+     $('.expense_project_sub_task_id').empty();
+     $('.expense_project_sub_task_id').append($('<option>', { 
+        text: 'Select Sub Tasks',
+      }));
+
+     $.each(tasks, function(i, v) {
+      $('.expense_project_task_id').append($('<option>', { 
+        value: v.id,
+        text: v.name,
+        'data-sub': v.sub_tasks 
+      }));
+     });
+  });
+
+  $('.expense_project_task_id').change(function(){
+     var selected = $(this).find('option:selected');
+     var sub_tasks = selected.data('sub');
+
+     $('.expense_project_sub_task_id').empty();
+     $('.expense_project_sub_task_id').append($('<option>', { 
+        text: 'Select Sub Tasks',
+      }));
+
+     $.each(sub_tasks, function(i, v) {
+      $('.expense_project_sub_task_id').append($('<option>', { 
+        value: v.id,
+        text: v.name,
+      }));
+     });
+  });
+});
+
+$(document).ready(function() {
+  $('#expense_project_task_id').change(function(){
+     var selected = $(this).find('option:selected');
+     var tasks = selected.data('tasks');
+     
+     $.each(tasks, function(i, v) {
+      $('#expense_project_task_id').append($('<option>', { 
+        value: v.id,
+        text : v.name 
+      }));
+     });
+  });
+});
+

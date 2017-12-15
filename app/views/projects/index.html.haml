@@ -2,21 +2,27 @@
   .row
     .col-md-8.col-xs-8.col-xs-12
     
-.x_panel
+.x_panel.scroll-none
   .x_content
     .tabsarea{"data-example-id" => "togglable-tabs", :role => "tabpanel"}
       %ul#myTab.nav.nav-tabs.bar_tabs{:role => "tablist"}
-        - @sub_cats.each_with_index do |sub_cat, index|
-          %li{:role => "presentation", :class => @active_tabe[index]}
-            %a{"aria-expanded" => "true", "data-toggle" => "tab", :href => "#tab_content"+index.to_s, :role => "tab"}
-              = sub_cat.name.capitalize+" Projects"
+        %li.dropdown{:role => "presentation"}
+          %a#myTabDrop1.dropdown-toggle{"aria-controls" => "myTabDrop1-contents", "data-toggle" => "dropdown", :href => "#"}
+            %span.text Select Category
+            %span.caret
+          %ul#myTabDrop1-contents.dropdown-menu{"aria-labelledby" => "myTabDrop1", :role => "menu"}
+            - @sub_cats.each_with_index do |sub_cat, index|
+              %li
+                %a#dropdown-tab{"aria-controls" => "dropdown1", "data-toggle" => "tab", :href => "#dropdown#{index}", :role => "tab", :tabindex => "-1"}
+                  %span= sub_cat.name.capitalize+" Projects"
+        
         %li{:role => "presentation"}
           %a{"aria-expanded" => "true", "data-toggle" => "tab", :href => "#tab_content#{@sub_cats.length}", :role => "tab"}
-            %span.glyphicon.glyphicon-plus
-
+            %span.glyphicon.glyphicon-plus    
+    
     #myTabContent.tab-content
       - @sub_cats.each_with_index do |sub_cat, index|
-        .tab-pane.fade.in{:role => "tabpanel", :id =>"tab_content"+index.to_s, :class => @active_tabe[index]}
+        .tab-pane.fade.in{:role => "tabpanel", :id =>"dropdown"+index.to_s, :class => @active_tabe[index]}
           .row
             - sub_cat.projects.each do |project|
               .animated.flipInY.col-lg-3.col-md-3.col-sm-6.col-xs-12
@@ -56,6 +62,4 @@
               .button-area
                 = f.submit "Save", class: "btn-save"
             .col-md-3.col-sm-3.col-xs-12.padding-right-0
-          
-
-
+      

@@ -7,6 +7,9 @@ class Project < ApplicationRecord
 
   has_many :project_tasks
   has_many :project_sub_tasks, through: :project_tasks
+  has_many :images
 
   validates :project_name, presence: true
+
+  accepts_nested_attributes_for :project_tasks
 end

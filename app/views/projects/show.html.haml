@@ -2,7 +2,7 @@
   .row
     .col-md-8.col-xs-8.col-xs-12
     
-.x_panel
+.x_panel.scroll-none
   .x_content
     .tabsarea{"data-example-id" => "togglable-tabs", :role => "tabpanel"}
       %ul#myTab.nav.nav-tabs.bar_tabs{:role => "tablist"}
@@ -10,13 +10,12 @@
           %a#allprojects{"aria-expanded" => "true", "data-toggle" => "tab", :href => "#tab_content0", :role => "tab"} Project Information
         %li{:role => "presentation"}
           %a#home-tab{"aria-expanded" => "true", "data-toggle" => "tab", :href => "#tab_content1", :role => "tab"}
-            Projects Tasks  Sub Tasks
-            %small Sessions
+            Tasks & Sub Tasks
     #myTabContent.tab-content
       #tab_content0.tab-pane.fade.active.in{"aria-labelledby" => "allprojects", :role => "tabpanel"}
         .row
           .x_content
-            .col-md-3.col-sm-3.col-xs-12
+            .all-project-block
               %section.panel
                 .x_title
                   %h2 Project Description
@@ -35,7 +34,7 @@
                     %p= @project.project_sub_category.try(:name).try(:capitalize)
                     %p.title Project Description
                     %p= @project.description_of_project.try(:capitalize)
-            .col-md-3.col-sm-3.col-xs-12
+            .all-project-block
               %section.panel
                 .x_title
                   %h2 Client Information
@@ -52,7 +51,7 @@
                     %p= @project.client.try(:cell).try(:capitalize)
                     %p.title Fax
                     %p= @project.client.try(:fax).try(:capitalize)
-            .col-md-3.col-sm-3.col-xs-12
+            .all-project-block
               %section.panel
                 .x_title
                   %h2 Project Manager
@@ -66,126 +65,49 @@
                     %p.title Cell Number
                     %p= @project.staff.try(:cell).try(:capitalize)
                 / start project-detail sidebar
-            .col-md-3.col-sm-3.col-xs-12
+            .all-project-block
               %section.panel
                 .x_title
                   %h2 Proposal  Contract Documents
                   .clearfix
                 .panel-body
-                  .project_detail
-                    %p.title Project files
-                    %p Deveint Inc
-                    %p.title Project Leader
-                    %p Tony Chicken
-                  %br/
-                  %h5 Project files
-                  %ul.list-unstyled.project_files
-                    %li
-                      %a{:href => ""}
-                        %i.fa.fa-file-word-o
-                        Functional-requirements.docx
-                    %li
-                      %a{:href => ""}
-                        %i.fa.fa-file-pdf-o
-                        UAT.pdf
-                    %li
-                      %a{:href => ""}
-                        %i.fa.fa-mail-forward
-                        Email-from-flatbal.mln
-                    %li
-                      %a{:href => ""}
-                        %i.fa.fa-picture-o
-                        Logo.png
-                    %li
-                      %a{:href => ""}
-                        %i.fa.fa-file-word-o
-                        Contract-10_12_2014.docx
+                  %p.title Project files
+                  %ul.list-unstyled.project_detail
+                    - @contracts.each do |i|
+                      %li
+                        %a{:href => i.file.url}
+                          %i.fa.fa-file-pdf-o= " #{File.basename(i.file.url)}"
+                        
                   %br/
                   .text-center.mtop20
-                    %a.btn.btn-sm.btn-primary{:href => "#"} Add files
-                    %a.btn.btn-sm.btn-warning{:href => "#"} Report contact
-            .col-md-3.col-sm-3.col-xs-12
+                    = form_for Image.new do |f|
+                      .btn.btn-sm.btn-warning
+                        = f.file_field :file
+                      = f.hidden_field :project_id, value: @project.id 
+                      = f.hidden_field :image_type, value: "contract" 
+                      = f.submit "Submit", class: "btn btn-sm btn-primary" 
+            .all-project-block
               %section.panel
                 .x_title
-                  %h2 Proposal Drawings
+                  %p.title Proposal Drawings
                   .clearfix
                 .panel-body
                   %h5 Project files
-                  %ul.list-unstyled.project_files
-                    %li
-                      %a{:href => ""}
-                        %i.fa.fa-file-word-o
-                        Functional-requirements.docx
-                    %li
-                      %a{:href => ""}
-                        %i.fa.fa-file-pdf-o
-                        UAT.pdf
-                    %li
-                      %a{:href => ""}
-                        %i.fa.fa-mail-forward
-                        Email-from-flatbal.mln
-                    %li
-                      %a{:href => ""}
-                        %i.fa.fa-picture-o
-                        Logo.png
-                    %li
-                      %a{:href => ""}
-                        %i.fa.fa-file-word-o
-                        Contract-10_12_2014.docx
+                  %ul.list-unstyled.project_detail
+                    - @drawings.each do |i|
+                      %li
+                        %a{:href => i.file.url}
+                          %i.fa.fa-file-pdf-o= " #{File.basename(i.file.url)}"
+                        
                   %br/
                   .text-center.mtop20
-                    %a.btn.btn-sm.btn-primary{:href => "#"} Add files
-                    %a.btn.btn-sm.btn-warning{:href => "#"} Report contact
-                / end project-detail sidebar
+                    = form_for Image.new do |f|
+                      .btn.btn-sm.btn-warning
+                        = f.file_field :file
+                      = f.hidden_field :project_id, value: @project.id 
+                      = f.hidden_field :image_type, value: "drawing" 
+                      = f.submit "Submit", class: "btn btn-sm btn-primary" 
+
       #tab_content1.tab-pane.fade.in{"aria-labelledby" => "home-tab", :role => "tabpanel"}
-        .row
-          .col-md-12.col-sm-12.col-xs-12
-            %ul.list-unstyled.timeline
-              %li
-                .block
-                  .tags
-                    %a{:href => ""}
-                      %span Land Aquisitions
-                  .block_content
-                    %h2.title
-                    %ul.list-unstyled.project_files
-                      %li
-                        %i.fa.fa-mail-forward
-                        Interior Design
-                      %li
-                        %i.fa.fa-mail-forward
-                        Rendering Services
-                      %li
-                        %i.fa.fa-mail-forward
-                        Landscaping Design
-              %li
-                .block
-                  .tags
-                    %span Professional Services
-                  %h2.title
-                  %ul.list-unstyled.project_files
-                    %li
-                      %i.fa.fa-mail-forward
-                      Lawyer's Services
-              %li
-                .block
-                  .tags
-                    %span Design  Engineering
-                  .block_content
-                    %h2.title
-                    %ul.list-unstyled.project_files
-                      %li
-                        %i.fa.fa-mail-forward
-                        Architectural Design
-                      %li
-                        %i.fa.fa-mail-forward
-                        Structural Engineering
-                      %li
-                        %i.fa.fa-mail-forward
-                        Interior Design
-                      %li
-                        %i.fa.fa-mail-forward
-                        Rendering Services
-                      %li
-                        %i.fa.fa-mail-forward
-                        Landscaping Design
+        = render "task_view"
+        

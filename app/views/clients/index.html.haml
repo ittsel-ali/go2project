@@ -2,7 +2,7 @@
   .row
     .col-md-8.col-xs-8.col-xs-12
     
-.x_panel
+.x_panel.scroll-none
   .x_content
     .tabsarea{"data-example-id" => "togglable-tabs", :role => "tabpanel"}
       %ul#myTab.nav.nav-tabs.bar_tabs{:role => "tablist"}
@@ -39,10 +39,20 @@
                   %td
                   %td
                   %td= client.business_name.try(:titleize)
-                  %td= client.project.try(:project_name).try(:titleize)
-                  %td= client.project.try(:project_number).try(:titleize)
-                  %td= client.project.try(:project_sub_category).try(:name).try(:titleize)
+                  %td
+                  %td
+                  %td
                   %td= client.address
-                  
+                - if client.expenses.present?
+                  - client.expenses.each do |exp|
+                    %tr
+                      %td
+                      %td
+                      %td
+                      %td= exp.project.try(:project_name).try(:titleize)
+                      %td= exp.project.try(:project_number).try(:titleize)
+                      %td= exp.project.try(:project_sub_category).try(:name).try(:titleize)
+                      %td
+
       #tab_content1.tab-pane.fade.in{"aria-labelledby" => "home-tab", :role => "tabpanel"}
         = render "shared/resource_form", form_object: @client 

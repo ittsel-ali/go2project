@@ -1,0 +1,58 @@
+.row
+  .col-md-12.col-sm-12.col-xs-12
+    %table.table.table-bordered
+      %thead
+        %tr
+          %th Tasks
+          %th Sub Tasks
+      %tbody
+        - @project.project_tasks.each do |task|
+          %tr
+            %td= task.name.try(:capitalize)
+            %td
+          - task.project_sub_tasks.each do |sub_task|
+            %tr
+              %td
+              %td= sub_task.name.try(:capitalize)   
+        
+    %br/
+    %br/
+    .clearfix           
+    .col-md-6.col-sm-6.col-xs-12.padding-right-0
+      = form_for [@project, ProjectTask.new] do |f|  
+        %section.panel
+          .x_title
+            %h2 Create SubTasks
+            .clearfix
+          .panel-body
+            .form-group.label-input
+              %label Task Name
+              = f.text_field :name, class: "form-control", placeholder: "Task Name"
+
+            .button-area
+              = f.submit "Create Task", class: "btn-save"
+    
+    
+    .col-md-6.col-sm-6.col-xs-12.padding-right-0
+      %section.panel
+        .x_title
+          %h2 Create SubTasks
+          .clearfix
+        .panel-body
+          .form-group.label-input
+            = select_tag "project_task_id", options_from_collection_for_select( @project.project_tasks, :id, :name), include_blank: "Select Task", class: "form-control select-dropdown"
+         
+          - if @project.project_tasks.count > 0 
+    
+            = form_for [@project, @project.project_tasks.first, ProjectSubTask.new] do |f|
+              .form-group.label-input#repeat-sub-task
+                %label Sub Task Name
+                = f.text_field :name, class: "form-control", placeholder: "Sub Task Name", name: "project_sub_task[0][name]"
+
+              .col-md-4.col-sm-4.col-xs-12.padding-right-0
+                .button-area
+                  %a.v_sub_task.btn-save{:href => "javascript:void(0);"}
+                    %span.glyphicon.glyphicon-plus
+              .col-md-8.col-sm-8.col-xs-12.padding-right-0
+                .button-area
+                  = f.submit "Create", class: "btn-save"      

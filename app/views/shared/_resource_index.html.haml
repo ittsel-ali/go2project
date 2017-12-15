@@ -2,7 +2,7 @@
   .row
     .col-md-8.col-xs-8.col-xs-12
     
-.x_panel
+.x_panel.scroll-none
   .x_content
     .tabsarea{"data-example-id" => "togglable-tabs", :role => "tabpanel"}
       %ul#myTab.nav.nav-tabs.bar_tabs{:role => "tablist"}
@@ -12,7 +12,7 @@
         %li{:role => "presentation"}
           %a#home-tab{"aria-expanded" => "true", "data-toggle" => "tab", :href => "#tab_content1", :role => "tab"}
             %span.glyphicon.glyphicon-plus
-            = "Add New #{new_object.class.table_name.singularize.titleize} Provider"
+            = "#{new_object.class.table_name.singularize.titleize}"
     #myTabContent.tab-content
       #tab_content0.tab-pane.fade.active.in{"aria-labelledby" => "allprojects", :role => "tabpanel"}
         %table.table.table-bordered
@@ -62,8 +62,8 @@
                       %td
                       %td= r.business_name.try(:titleize)
                       %td= r_exp.project.try(:project_name).try(:titleize)
-                      %td= r_exp.task.try(:name).try(:titleize)
-                      %td= r_exp.sub_task.try(:name).try(:titleize)
+                      %td= r_exp.project_task.try(:name).try(:titleize)
+                      %td= r_exp.project_sub_task.try(:name).try(:titleize)
                       %td.text-center
                         %a{:href => "#"}
                           %i.fa.fa-pencil-square-o{"aria-hidden" => "true"}

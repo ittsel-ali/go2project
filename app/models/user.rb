@@ -26,6 +26,8 @@ class User < ApplicationRecord
   has_many :clients
   has_many :client_categories  
 
+  has_many :expenses
+
   after_create :import_resource_categories  
 
   def import_resource_categories

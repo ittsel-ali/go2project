@@ -1,0 +1,33 @@
+.col-md-6.col-sm-6.col-xs-12.padding-right-0
+  .form-group.label-input
+    = f.label :payment_type
+    = f.text_field :payment_type, placeholder: 'Payment Type' 
+
+.col-md-6.col-sm-6.col-xs-12.padding-right-0
+  .form-group.label-input  
+    = f.label :payment_menthod
+    = f.text_field :payment_menthod, placeholder: 'Payment Method'
+
+.col-md-6.col-sm-6.col-xs-12.padding-right-0
+  .form-group.label-input    
+    = f.label :amount
+    = f.text_field :amount, placeholder: 'Amount'
+
+.col-md-6.col-sm-6.col-xs-12.padding-right-0
+  .form-group.label-input   
+    = f.label :project_id
+    = f.select :project_id, options_for_select(@projects.map { |p| [p.project_name, p.id, {'data-tasks' => p.project_tasks.map{|t| {id: t.id, name: t.name, sub_tasks: t.project_sub_tasks.to_json} }.to_json }] }, selected_key = f.object.project_id), {include_blank: "Select Project"}, {class: "expense_project_id selectpicker form-control"}
+
+.col-md-6.col-sm-6.col-xs-12.padding-right-0
+  .form-group.label-input   
+    = f.label :project_task_id
+    = f.collection_select :project_task_id, [], :id, :name, {include_blank: "Select Tasks"}, {class: "form-control select-dropdown expense_project_task_id"}
+
+.col-md-6.col-sm-6.col-xs-12.padding-right-0
+  .form-group.label-input   
+    = f.label :project_sub_task_id
+    = f.collection_select :project_sub_task_id, [], :id, :name, {include_blank: "Select Sub Tasks"}, {class: "form-control select-dropdown expense_project_sub_task_id"}
+
+.col-md-6.col-sm-6.col-xs-12.padding-right-0
+  .form-group.label-input   
+    = f.submit "Add Expense" 

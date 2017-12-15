@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171124204202) do
+ActiveRecord::Schema.define(version: 20171214155112) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,6 +80,15 @@ ActiveRecord::Schema.define(version: 20171124204202) do
     t.index ["project_sub_task_id"], name: "index_expenses_on_project_sub_task_id"
     t.index ["project_task_id"], name: "index_expenses_on_project_task_id"
     t.index ["user_id"], name: "index_expenses_on_user_id"
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.string "file"
+    t.string "image_type"
+    t.bigint "project_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_images_on_project_id"
   end
 
   create_table "material_categories", force: :cascade do |t|

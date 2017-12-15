@@ -4147,14 +4147,14 @@ ul.notifications {
     margin-right: 5px;
 }
 .top-nav-holder li  #menu_toggle a i{
-	font-size: 26px	!important;
+    font-size: 26px !important;
 }
 .top_nav li a i {
-	font-size: 24px !important;
+    font-size: 24px !important;
 }
 .table-border {
-	border: 1px solid #ddd;
-	margin: 15px 0 0;
+    border: 1px solid #ddd;
+    margin: 15px 0 0;
 }
 .heading-nav {
     font-size: 12px;
@@ -4445,13 +4445,265 @@ input: -ms-input-placeholder {
   transition: all .3s cubic-bezier(.3, .2, .3, 2);
   -webkit-transition: all .3s cubic-bezier(.3, .2, .3, 2);
 }
-@media (max-width: 767px) {
-    .add-payment-form .form-group h3 {
-    line-height: 34px;
-    font-size: 13px;
-    color: #2d3030;
-    display: block;
-    margin: 0 0 0;
-    padding-top: 0;
+.add-expense-mob,
+.accpetpayment-mob {
+  display: none;
+}
+.btn-new-project  {
+    float: left;
+    margin: 0 0 10px;
+}
+.all-projct-panel {
+    margin: 0 0 30px;
+}
+.bar_tabs-responsive .bar_tabs>li a {
+  display: inline-block;
+  padding: 10px 17px;
+}
+.bar_tabs-responsive .bar_tabs>li.active a{
+  width: auto;
+  padding: 10px 13px;
+}
+/**
+ * Demo Styles
+ */
+.wrapper {
+  padding: 15px 0;
+}
+.bs-example-tabs .nav-tabs {
+  margin-bottom: 15px;
+}
+.bar_tabs-responsive .bar_tabs > li > a .dropdown-menu li a {
+  display: block;
+}
+.all-project-block {
+  width: 24%;
+  display: inline-block;
+  vertical-align: top;
+      padding-right: 10px;
+    padding-left: 10px;  
+}
+.all-project-block .title {
+    font-weight: 700;
+    margin-bottom: 0;
+}
+.form-width {
+  width: 72%;
+  margin: 0 auto;
+}
+@media screen and (max-width: 992px) {
+  .all-project-block {
+    width: 24%;
+  }
+  .form-width {
+    width: 72%;
+    margin: 0 auto;
+  }
+}
+@media screen and (max-width: 767px) {
+  .form-width {
+    width: 100%;
+    margin: 0 auto;
+  }
+    .all-project-block {
+      width: 100%;
+      float: left;
     }
+  .x_panel {
+    padding: 10px 5px;
+  }
+  .top_nav .navbar-right {
+    margin: 0;
+    width: 47%;
+    float: right;
+  }
+  .toggle .add-expense {
+    display: none;
+  }
+  .toggle .accpetpayment {
+    display: none;
+  }
+  .toggle {
+    width: 150px;
+  }
+  .add-expense-mob {
+    display: inline-block;
+    vertical-align: middle;
+  }
+
+  .accpetpayment-mob {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 13px 0 0;
+  }
+  .mobile-button {
+    text-align: center;
+    display: table;
+    width: 100%;
+    margin: 0 0 8px;
+  }
+  .btn-new-project  {
+    float: left;
+    width:  100%;
+    margin: 0 0 10px;
+  }
+
+  .bar_tabs-responsive .bar_tabs>li{
+    border: none;
+    margin-top: -17px;
+    margin-left: 0;
+    background: none;
+    border-bottom: none;
+    border-radius: 0;
+  }
+  .bar_tabs-responsive .bar_tabs>li.active a {
+    width: 100%;
+    padding: 10px 13px;
+  }
+  .bar_tabs-responsive ul.bar_tabs>li a {
+    display: inline-block;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+    padding: 10px 5px;
+  }
+  .nav-tabs-responsive > li {
+    display: none;
+    width: 14%;
+  }
+  .nav-tabs-responsive > li > a {
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+    width: 100%;
+    width: 100%;
+    text-align: center;
+    vertical-align: top;
+  }
+  .nav-tabs-responsive > li.active {
+    width: 66%;
+  }
+  .nav-tabs-responsive > li.active:first-child {
+    margin-left: 14%;
+  }
+  .nav-tabs-responsive > li.active, .nav-tabs-responsive > li.prev, .nav-tabs-responsive > li.next {
+    display: block;
+  }
+  .nav-tabs-responsive > li.prev, .nav-tabs-responsive > li.next {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+  }
+  .nav-tabs-responsive > li.next > a, .nav-tabs-responsive > li.prev > a {
+    -webkit-transition: none;
+    transition: none;
+  }
+  .nav-tabs-responsive > li.next > a .text, .nav-tabs-responsive > li.prev > a .text {
+    display: none;
+  }
+  .nav-tabs-responsive > li.next > a:after, .nav-tabs-responsive > li.prev > a:after, .nav-tabs-responsive > li.next > a:after, .nav-tabs-responsive > li.prev > a:after {
+    position: relative;
+    top: 1px;
+    display: inline-block;
+    font-family: 'Glyphicons Halflings';
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  .nav-tabs-responsive > li.prev > a:after {
+    content: "\e079";
+  }
+  .nav-tabs-responsive > li.next > a:after {
+    content: "\e080";
+  }
+  .nav-tabs-responsive > li.dropdown > a > .caret {
+    display: none;
+  }
+  .nav-tabs-responsive > li.dropdown > a:after {
+    content: "\e114";
+  }
+  .nav-tabs-responsive > li.dropdown.active > a:after {
+    display: none;
+  }
+  .nav-tabs-responsive > li.dropdown.active > a > .caret {
+    display: inline-block;
+  }
+  .nav-tabs-responsive > li.dropdown .dropdown-menu.pull-xs-left {
+    left: 0;
+    right: auto;
+  }
+  .nav-tabs-responsive > li.dropdown .dropdown-menu.pull-xs-center {
+    right: auto;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+  }
+  .nav-tabs-responsive > li.dropdown .dropdown-menu.pull-xs-right {
+    left: auto;
+    right: 0;
+  }
+}
+@media (max-width: 600px){
+  .x_panel {
+      overflow-x: scroll;
+      width:  100%;
+  }
+  .x_panel.scroll-none  {
+      overflow-x: visible;
+      width:  100%;
+      margin: 45px 0 0;
+  }
+  .scroll-none .x_content {
+      width: 100% !important;
+  }
+  .x_panel .x_content {
+      width: 595px;
+  }
+
+  #myTabContent::-webkit-scrollbar {
+    width: 5px;
+    height: 6px;
+  }
+   
+  #myTabContent::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    border-radius: 5px;
+  }
+   
+  #myTabContent::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+  }
+
+  #myTabContent {
+    overflow-x: scroll;
+    width:  100%;
+  }
+  .tab-pane{
+    width: 595px;
+  }
+  .main-panel {
+    margin: 0 0 10px;
+  }
+}
+
+@media (max-width: 500px){
+  .registration_form {
+     overflow: hidden;
+  }
+  .x_content {
+      width: 595px;
+  }
+}
+@media (max-width: 479px) {
+  #narrow-browser-alert {
+    display: none;
+  }
 }

@@ -12,6 +12,8 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    @contracts = @project.images.where(image_type: 'contract')
+    @drawings = @project.images.where(image_type: 'drawing')
   end
 
   def new
