@@ -2,8 +2,8 @@ CarrierWave.configure do |config|
   
   config.fog_credentials = {
     :provider               => 'AWS',                             # required
-    :aws_access_key_id      => 'AKIAJ4Q34IP3HOS6GWSQ',            # required
-    :aws_secret_access_key  => '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',     # required
+    :aws_access_key_id      => 'AKIAJTDWZCN4BA4YV7DA',            # required
+    :aws_secret_access_key  => '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',     # required
     :region                 => 'us-east-2'                        # optional, defaults to 'us-east-1'
   }
   config.fog_directory  = 'go2meeting-dev'               # required
