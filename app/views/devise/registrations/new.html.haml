@@ -6,10 +6,10 @@
           %img.login-logo-image{:src => image_path("Fieldwire_icon.svg")}
             %h1 Create Account
             .row
-              .col-md-6
+              .col-md-6.col-xs-6.col-xs-6
                 %div
                   = f.text_field :first_name, autofocus: true, placeholder: "First", class: "form-control"
-              .col-md-6
+              .col-md-6.col-xs-6.col-xs-6
                 %div
                   = f.text_field :last_name, placeholder: "Last", class: "form-control"  
             %div
