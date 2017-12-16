@@ -76,7 +76,7 @@
                     - @contracts.each do |i|
                       %li
                         %a{:href => i.file.url}
-                          %i.fa.fa-file-pdf-o= " #{File.basename(i.file.url)}"
+                          %i.fa.fa-file-pdf-o= " #{File.basename(i.file.url.to_s)}"
                         
                   %br/
                   .text-center.mtop20
@@ -97,7 +97,7 @@
                     - @drawings.each do |i|
                       %li
                         %a{:href => i.file.url}
-                          %i.fa.fa-file-pdf-o= " #{File.basename(i.file.url)}"
+                          %i.fa.fa-file-pdf-o= " #{File.basename(i.file.url.to_s)}"
                         
                   %br/
                   .text-center.mtop20
