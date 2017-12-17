@@ -506,7 +506,7 @@ body .container.body .right_col {
 body {
       color: #333;
     font-family: "Helvetica Neue", Roboto, Arial, "Droid Sans", sans-serif;
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 400;
     line-height: 1.471;
 /*    background: url(../images/mybg.png) #fff !important;*/
@@ -4711,7 +4711,6 @@ input: -ms-input-placeholder {
     display: none;
   }
 }
-
 .tab-contact-scroll-none {
     overflow-x: hidden;
   }
