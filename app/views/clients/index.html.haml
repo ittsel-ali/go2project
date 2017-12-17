@@ -54,5 +54,5 @@
                       %td= exp.project.try(:project_sub_category).try(:name).try(:titleize)
                       %td
 
-      #tab_content1.tab-pane.fade.in{"aria-labelledby" => "home-tab", :role => "tabpanel"}
+      #tab_content1.tab-fixed-width-none.tab-pane.fade.in{"aria-labelledby" => "home-tab", :role => "tabpanel"}
         = render "shared/resource_form", form_object: @client 

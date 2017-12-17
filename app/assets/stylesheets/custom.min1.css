@@ -4711,3 +4711,10 @@ input: -ms-input-placeholder {
     display: none;
   }
 }
+
+.tab-contact-scroll-none {
+    overflow-x: hidden;
+  }
+.tab-contact-scroll .tab-pane.tab-fixed-width-none{
+    width: 100%;
+}
