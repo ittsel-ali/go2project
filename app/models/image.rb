@@ -1,5 +1,5 @@
 class Image < ApplicationRecord
- 	mount_uploader :file, ImageUploader
-  # attr_accessible :file	
-  belongs_to :project
+  mount_uploader :file, ImageUploader
+
+  belongs_to :imagable, polymorphic: true
 end

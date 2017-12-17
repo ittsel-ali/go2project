@@ -29,5 +29,10 @@
     = f.collection_select :project_sub_task_id, [], :id, :name, {include_blank: "Select Sub Tasks"}, {class: "form-control select-dropdown expense_project_sub_task_id"}
 
 .col-md-6.col-sm-6.col-xs-12.padding-right-0
-  .form-group.label-input   
+  = f.fields_for "image_attributes"  do |ff|
+    .btn.btn-sm.btn-warning.btn-width
+      = ff.file_field :file
+
+.col-md-12.col-sm-12.col-xs-12.padding-right-0
+  .button-area
     = f.submit "Add Expense", class: "btn-save" 

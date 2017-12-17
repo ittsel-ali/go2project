@@ -80,10 +80,12 @@
                         
                   %br/
                   .text-center.mtop20
-                    = form_for Image.new do |f|
+                    = form_for @project.images.new do |f|
                       .btn.btn-sm.btn-warning.btn-width
                         = f.file_field :file
-                      = f.hidden_field :project_id, value: @project.id 
+                      = f.hidden_field :imagable_type, value: "Project"
+                      = f.hidden_field :imagable_id, value: @project.id 
+                      
                       = f.hidden_field :image_type, value: "contract" 
                       = f.submit "Submit", class: "btn btn-sm btn-primary" 
             .all-project-block
@@ -101,10 +103,12 @@
                         
                   %br/
                   .text-center.mtop20
-                    = form_for Image.new do |f|
+                    = form_for @project.images.new do |f|
                       .btn.btn-sm.btn-warning.btn-width
                         = f.file_field :file
-                      = f.hidden_field :project_id, value: @project.id 
+                      = f.hidden_field :imagable_type, value: "Project"
+                      = f.hidden_field :imagable_id, value: @project.id 
+
                       = f.hidden_field :image_type, value: "drawing" 
                       = f.submit "Submit", class: "btn btn-sm btn-primary" 
 

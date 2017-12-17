@@ -9,6 +9,8 @@ class Project < ApplicationRecord
   has_many :project_sub_tasks, through: :project_tasks
   has_many :images
 
+  has_many :images, as: :imagable
+
   validates :project_name, presence: true
 
   accepts_nested_attributes_for :project_tasks
@@ -16,7 +18,6 @@ class Project < ApplicationRecord
   after_save :construction_tasks
 
   def construction_tasks
-    puts "100"*100
     puts self.project_category.name
     if self.project_category.name == "construction"
       self.project_tasks.create(

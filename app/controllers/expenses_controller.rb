@@ -26,6 +26,6 @@ class ExpensesController < ApplicationController
   private
 
   def permit_params
-    params.require(:expense).permit(:expensable_id, :expensable_type, :payment_type, :payment_menthod, :amount, :project_id, :project_task_id, :project_sub_task_id)
+    params.require(:expense).permit(:expensable_id, :expensable_type, :payment_type, :payment_menthod, :amount, :project_id, :project_task_id, :project_sub_task_id, image_attributes: {})
   end
 end

@@ -3,8 +3,8 @@ class CreateImages < ActiveRecord::Migration[5.1]
     create_table :images do |t|
       t.string :file
       t.string :image_type
-
-      t.references :project
+      
+      t.references :imagable, polymorphic: true, index: true
 
       t.timestamps
     end

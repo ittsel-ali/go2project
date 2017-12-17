@@ -85,10 +85,11 @@ ActiveRecord::Schema.define(version: 20171214155112) do
   create_table "images", force: :cascade do |t|
     t.string "file"
     t.string "image_type"
-    t.bigint "project_id"
+    t.string "imagable_type"
+    t.bigint "imagable_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["project_id"], name: "index_images_on_project_id"
+    t.index ["imagable_type", "imagable_id"], name: "index_images_on_imagable_type_and_imagable_id"
   end
 
   create_table "material_categories", force: :cascade do |t|
