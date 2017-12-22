@@ -18,9 +18,10 @@ class ApplicationController < ActionController::Base
     stored_location_for(resource) || projects_path(project_cat: current_user.project_categories.first.try(:name))
   end
 
+  
   def layout_by_resource
     if devise_controller?
-      "devise"
+        "devise"
     else
       "application"
     end
@@ -28,5 +29,6 @@ class ApplicationController < ActionController::Base
 
   def configure_permitted_parameters
      devise_parameter_sanitizer.permit(:sign_up) { |u| u.permit(:first_name, :last_name, :company_name, :email, :password) }
+     devise_parameter_sanitizer.permit(:account_update) { |u| u.permit(:first_name, :last_name, :company_name, :email, :password, :current_password, image_attributes: {}) }
   end
 end
