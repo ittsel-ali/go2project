@@ -30,7 +30,7 @@ class User < ApplicationRecord
 
   has_one :image, as: :imagable, validate: false
 
-  accepts_nested_attributes_for :image
+  accepts_nested_attributes_for :image, :allow_destroy => true
 
   after_create :import_resource_categories  
 

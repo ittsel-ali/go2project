@@ -30,6 +30,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'carrierwave'
 # gem 'fog'
 gem 'carrierwave-aws'
+gem 'mini_magick'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
