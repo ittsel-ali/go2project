@@ -24,11 +24,15 @@
               %th Project Number
               %th Project Sub Category
               %th Address
+              %th Edit
+              %th Delete
           %tbody
             - @client_cats.each do |cat|
               %tr
                 %td= cat.clients.present? ? '-' : '+'
                 %td= cat.name.try(:titleize)
+                %td
+                %td
                 %td
                 %td
                 %td
@@ -43,6 +47,12 @@
                   %td
                   %td
                   %td= client.address
+                  %td.text-center
+                    %a{:href => url_for([:edit, client])}
+                      %i.fa.fa-pencil-square-o{"aria-hidden" => "true"}
+                  %td.text-center
+                    %a{:href => "#"}
+                      %i.fa.fa-trash-o{"aria-hidden" => "true"}
                 - if client.expenses.present?
                   - client.expenses.each do |exp|
                     %tr
@@ -53,6 +63,12 @@
                       %td= exp.project.try(:project_number).try(:titleize)
                       %td= exp.project.try(:project_sub_category).try(:name).try(:titleize)
                       %td
+                      %td.text-center
+                        %a{:href => url_for([:edit, exp])}
+                          %i.fa.fa-pencil-square-o{"aria-hidden" => "true"}
+                      %td.text-center
+                        %a{:href => "#"}
+                          %i.fa.fa-trash-o{"aria-hidden" => "true"}
 
       #tab_content1.tab-fixed-width-none.tab-pane.fade.in{"aria-labelledby" => "home-tab", :role => "tabpanel"}
         = render "shared/resource_form", form_object: @client 

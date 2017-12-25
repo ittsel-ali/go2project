@@ -1,0 +1,25 @@
+.main-panel
+  .row
+    .col-md-8.col-xs-8.col-xs-12
+    .col-md-4.col-sm-4.col-xs-12.form-group.pull-right.top_search
+      
+.x_panel.scroll-none
+  .x_content
+    .tabsarea{"data-example-id" => "togglable-tabs", :role => "tabpanel"}
+      %ul#myTab.nav.nav-tabs.bar_tabs{:role => "tablist"}
+        %li.dropdown{:role => "presentation"}
+          %ul#myTabDrop1-contents.dropdown-menu{"aria-labelledby" => "myTabDrop1", :role => "menu"}
+            %li
+              %a#dropdown-tab{"aria-controls" => "dropdown1", "data-toggle" => "tab", :href => "#dropdown1", :role => "tab", :tabindex => "-1"}
+                %span= @expense.expensable_type.capitalize
+
+  #myTabContent.tab-content
+    #dropdown1.tab-pane.fade.active.in{:role => "tabpanel"}
+
+      = form_for @expense, html:{ class: "rentalapplication-form add-payment-form form-horizontal form-width"} do |f|
+        .col-md-6.col-sm-6.col-xs-12.padding-right-0
+          .form-group.label-input
+            = f.hidden_field :expensable_id, readonly: true, disable: true
+            = f.text_field :expensable_type, readonly: true
+        
+        =render "common_fields", f: f

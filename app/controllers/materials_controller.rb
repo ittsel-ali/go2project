@@ -5,11 +5,27 @@ class MaterialsController < ApplicationController
   	@material = Material.new
   end
 
+  def edit
+    @material = current_user.materials.where(id: params[:id]).first
+  end
+
   def create
   	@material = current_user.materials.build(permit_material_attributes)
 
     if @material.save
       flash[:success] = I18n.t 'resource_creation', resource: @material.class.table_name.singularize.titleize
+    else
+      flash[:error] = @material.errors.full_messages.to_sentence
+    end
+    
+    redirect_to materials_path
+  end
+
+  def update
+    @material = Material.find(params[:id])
+
+    if @material.update(permit_material_attributes)
+      flash[:success] = I18n.t 'resource_updation', resource: @material.class.table_name.singularize.titleize
     else
       flash[:error] = @material.errors.full_messages.to_sentence
     end

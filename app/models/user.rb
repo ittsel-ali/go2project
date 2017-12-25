@@ -28,10 +28,10 @@ class User < ApplicationRecord
 
   has_many :expenses
 
-  has_one :image, as: :imagable, validate: false
+  has_one :image, as: :imagable, validate: false, :dependent => :destroy
 
-  accepts_nested_attributes_for :image, :allow_destroy => true
-
+  accepts_nested_attributes_for :image
+  
   after_create :import_resource_categories  
 
   def import_resource_categories

@@ -5,11 +5,27 @@ class TradesController < ApplicationController
   	@trade = Trade.new
   end
 
+  def edit
+    @trade = current_user.trades.where(id: params[:id]).first
+  end
+
   def create
   	@trade = current_user.trades.build(permit_trade_attributes)
 
     if @trade.save
       flash[:success] = I18n.t 'resource_creation', resource: @trade.class.table_name.singularize.titleize
+    else
+      flash[:error] = @trade.errors.full_messages.to_sentence
+    end
+    
+    redirect_to trades_path
+  end
+
+  def update
+    @trade = Trade.find(params[:id])
+
+    if @trade.update(permit_trade_attributes)
+      flash[:success] = I18n.t 'resource_updation', resource: @trade.class.table_name.singularize.titleize
     else
       flash[:error] = @trade.errors.full_messages.to_sentence
     end

@@ -4,7 +4,7 @@
       .form-group
         .dropdown.categories-dropdown-holder
           .form-group.label-input
-            = f.collection_select "#{form_object.category_key}_id", current_user.send(form_object.category_key.pluralize) ,:id,:name, include_blank: "Select Category", class: "form-control select-dropdown"
+            = f.select "#{form_object.category_key}_id", options_for_select(current_user.send(form_object.category_key.pluralize).map { |o| [o.name, o.id] }, selected_key = form_object.send("#{form_object.category_key}_id")) , include_blank: "Select Category", class: "form-control select-dropdown"
 
     .col-md-6.col-sm-6.col-xs-12.padding-right-0
       .form-group.label-input
@@ -36,4 +36,4 @@
         = f.text_field :address, class: "form-control", placeholder: "Address"
     
     .button-area
-      = f.submit "Save", class: "btn-save"
+      = f.submit form_object.new_record? ? "Save" : "Update" , class: "btn-save"

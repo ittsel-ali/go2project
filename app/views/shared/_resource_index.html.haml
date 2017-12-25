@@ -49,7 +49,7 @@
                     %td
                     %td
                     %td.text-center
-                      %a{:href => "#"}
+                      %a{:href => url_for([:edit, r])}
                         %i.fa.fa-pencil-square-o{"aria-hidden" => "true"}
                     %td.text-center
                       %a{:href => "#"}
@@ -65,10 +65,10 @@
                       %td= r_exp.project_task.try(:name).try(:titleize)
                       %td= r_exp.project_sub_task.try(:name).try(:titleize)
                       %td.text-center
-                        %a{:href => "#"}
+                        %a{:href => edit_expense_path(r_exp.id)}
                           %i.fa.fa-pencil-square-o{"aria-hidden" => "true"}
                       %td.text-center
-                        %a{:href => "#"}
+                        %a{:href => expense_path(r_exp.id), :data_method => "delete"}
                           %i.fa.fa-trash-o{"aria-hidden" => "true"}
 
       #tab_content1.tab-fixed-width-none.tab-pane.fade.in{"aria-labelledby" => "home-tab", :role => "tabpanel"}

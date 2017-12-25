@@ -1,6 +1,6 @@
 .main-panel
   .row
-    .col-md-8.col-xs-8.col-xs-12
+    .col-md-12.col-xs-12.col-xs-12
     .col-md-4.col-sm-4.col-xs-12.form-group.pull-right.top_search
       
 .x_panel.scroll-none
@@ -34,6 +34,9 @@
           %i (we need your current password to confirm your changes)
           %br/
           = f.password_field :current_password, autocomplete: "off", class: "form-control"
+        
+        .col-md-12.col-xs-12.col-xs-12.form-group.text-center  
+          %img{src: current_user.image.try(:file).try(:small).try(:url) }
         
         .field.col-md-12.col-xs-12.col-xs-12.form-group
           = f.fields_for "image_attributes"  do |ff|

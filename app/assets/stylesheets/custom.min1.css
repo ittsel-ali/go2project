@@ -4717,3 +4717,6 @@ input: -ms-input-placeholder {
 .tab-contact-scroll .tab-pane.tab-fixed-width-none{
     width: 100%;
 }
+.img-size{
+    width: 100%
+}

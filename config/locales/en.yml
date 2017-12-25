@@ -32,3 +32,4 @@
 en:
   hello: "Hello world"
   resource_creation: "%{resource} has been created sucessfully."
+  resource_updation: "%{resource} has been updated sucessfully."
