@@ -30,8 +30,6 @@ class ImageUploader < CarrierWave::Uploader::Base
   # end
 
   # Create different versions of your uploaded files:
-  process :set_content_type
-
 
 
   version :thumb do
