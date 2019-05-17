@@ -1,4 +1,5 @@
-# README
+# Go2Project
+The file will be updated soon
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
